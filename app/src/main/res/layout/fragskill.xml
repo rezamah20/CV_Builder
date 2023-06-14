@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail_user.EditKontakActivity"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputOutlinedDenseStyle"
+        android:id="@+id/nama_skill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama Skill"
+        android:text="Nama Skill"
+        tools:ignore="MissingConstraints"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeErrorColor="@color/black"
+        android:textAppearance="@color/black"
+        app:shapeAppearance="@style/CustomShapeOVerlay"
+        android:enabled="true"
+        app:endIconMode="clear_text"
+        app:boxStrokeWidthFocused="2dp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:hintAnimationEnabled="true"
+        app:helperText="Masukan Nama / Jenis Skill"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nama_skill_et"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

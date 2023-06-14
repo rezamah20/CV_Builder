@@ -21,6 +21,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String table_user = "tb_user";
     public static final String table_contact = "tb_contact";
     public static final String table_pendidikan = "tb_pendidikan";
+    public static final String table_skill = "tb_skill";
 
     //coloume table profil
     public static final String key_id = "id";
@@ -45,6 +46,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String key_tahun_lulus = "tahun_lulus";
     public static final String key_keterangan_pendidikan = "keterangan_pendidikan";
 
+    //colome table skill
+    public static final String primarykey_id_skill = "id_skill";
+    public static final String key_id_skill ="id";
+    public static final String nama_skill = "nama_skill";
+
+
     public DatabaseHandler(Context context){
         super(context, database_name, null, database_version);
     }
@@ -58,9 +65,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //table_pendidikan
         String create_pendidikan = "CREATE TABLE " + table_pendidikan + "("+primarykey_id_pendidikan+" INTEGER PRIMARY KEY autoincrement, "+key_id_pendidikan+" INTEGER, "+key_nama_sekolah+" TEXT, "+key_nama_jurusan+" TEXT, "+key_tahun_masuk+" TEXT, "+key_tahun_lulus+" TEXT, "+key_keterangan_pendidikan+" TEXT)";
 
+        String create_skill = "CREATE TABLE " + table_skill + "("+primarykey_id_skill+" INTEGER PRIMARY KEY autoincrement, "+key_id_skill+" TEXT, "+nama_skill+" TEXT)";
+
         db.execSQL(create_user_table);
         db.execSQL(create_contact_table);
         db.execSQL(create_pendidikan);
+        db.execSQL(create_skill);
     }
 
     @Override
@@ -77,6 +87,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + table_pendidikan);
             onCreate(db);
 
+            //drop table skill
+            db.execSQL("DROP TABLE IF EXISTS " + table_skill);
+            onCreate(db);
     }
 
     public ArrayList<usermodels> getAll(){
