@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Edit_Activity">
+
+    <ImageView
+        android:id="@+id/img_user"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/img_user"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="42dp"
+        />
+    <Button
+        android:id="@+id/add_image"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_user"
+        android:text="+       Pilih Foto"
+        android:textColor="@color/white"
+        android:background="@drawable/button_round_delete"
+        android:layout_margin="16dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputOutlinedDenseStyle"
+        android:id="@+id/namaprofil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeErrorColor="@color/black"
+        android:textAppearance="@color/black"
+        app:shapeAppearance="@style/CustomShapeOVerlay"
+        android:enabled="true"
+        app:endIconMode="clear_text"
+        app:boxStrokeWidthFocused="2dp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:hintAnimationEnabled="true"
+        app:helperText="Isikan Nama Anda"
+        app:layout_constraintTop_toBottomOf="@+id/add_image"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/namaprofil_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:autofillHints=""
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/posisiprofil"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:hint="Posisi"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:text="Jabatan"
+        android:textAppearance="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeErrorColor="@color/black"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconMode="clear_text"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/namaprofil"
+        app:shapeAppearance="@style/CustomShapeOVerlay"
+        app:helperText="Masukan Jabatan Anda"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/posisiprofil_et"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dataprofil"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:hint="Profil Pribadi"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:text="Profil Pribadi"
+        android:textAppearance="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeErrorColor="@color/black"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconMode="clear_text"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/posisiprofil"
+        app:shapeAppearance="@style/CustomShapeOVerlay"
+        app:helperText="Ceritakan Tentang Anda"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/dataprofil_et"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/simpan"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/dataprofil"
+        android:text="Simpan"
+        android:textColor="@color/white"
+        android:layout_margin="16dp"
+        android:background="@drawable/shape_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

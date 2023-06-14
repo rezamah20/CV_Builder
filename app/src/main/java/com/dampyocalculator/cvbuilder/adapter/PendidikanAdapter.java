@@ -1,0 +1,123 @@
+package com.dampyocalculator.cvbuilder.adapter;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.ListFragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
+import com.dampyocalculator.cvbuilder.database.usermodels;
+import com.dampyocalculator.cvbuilder.detail_user.EditPendidikanActivity;
+import com.dampyocalculator.cvbuilder.list_user;
+
+import java.util.ArrayList;
+
+public class PendidikanAdapter extends RecyclerView.Adapter<PendidikanAdapter.PendidikanViewHolder> {
+
+    Activity activity;
+    Context context;
+    private ArrayList<usermodels> list = new ArrayList<>();
+    private DatabaseHandler databaseHandler;
+    RecyclerView mRecyclerView;
+
+
+    public PendidikanAdapter(Activity activity, Context context){
+        this.activity = activity;
+        this.context = context;
+    }
+    public void setListUser(ArrayList<usermodels> listNotes){
+        if (listNotes.size() > 0){
+            this.list.clear();
+        }
+        this.list.addAll(listNotes);
+        notifyDataSetChanged();
+    }
+
+
+    @NonNull
+    @Override
+    public PendidikanAdapter.PendidikanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View V = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pendidikan, parent, false);
+        return new PendidikanViewHolder(V);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull PendidikanAdapter.PendidikanViewHolder holder, int position) {
+        holder.tv_namasekolah.setText(list.get(position).getNamasekolah());
+        holder.tv_jurusan.setText(list.get(position).getNamajurusan());
+        holder.tv_tahunmasuk.setText(list.get(position).getTahunmasuk());
+        holder.tv_tahunlulus.setText(list.get(position).getTahunlulus());
+
+        holder.id_pendidikan = list.get(position).getPrimarykeypendidikanar();
+        holder.key_id = list.get(position).getId();
+
+        holder.delete_pendidikan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+                builder.setTitle("konfirmasi hapus ?");
+                builder.setMessage("apakah Anda Yakin Ingin Menghapus ?");
+                builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        databaseHandler = new DatabaseHandler(context);
+
+                        SQLiteDatabase delete = databaseHandler.getWritableDatabase();
+                        String query = "DELETE FROM " +DatabaseHandler.table_pendidikan+ " WHERE " +DatabaseHandler.primarykey_id_pendidikan+ " = " +holder.id_pendidikan;
+                        delete.execSQL(query);
+                        Toast.makeText(activity, "Hapus berhasil!", Toast.LENGTH_SHORT).show();
+                        Intent myIntent = new Intent(activity, EditPendidikanActivity.class);
+                        myIntent.putExtra("id", list.get(0).getId());
+                        Log.d("TAG Key ID", list.get(0).getId());
+                        activity.startActivity(myIntent);
+                        activity.finish();
+                    }
+                });
+                builder.setNegativeButton("Tidak", null);
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return list.size();
+    }
+
+    public class PendidikanViewHolder extends RecyclerView.ViewHolder {
+        TextView tv_namasekolah, tv_jurusan, tv_tahunmasuk, tv_tahunlulus;
+        String key_id, id_pendidikan;
+        Button delete_pendidikan;
+
+        public PendidikanViewHolder(View v) {
+            super(v);
+            tv_namasekolah = (TextView) v.findViewById(R.id.tv_item_nama_sekolah);
+            tv_jurusan = (TextView) v.findViewById(R.id.tv_item_jurusan_sekolah);
+            tv_tahunmasuk = (TextView) v.findViewById(R.id.tahun_masuk_txt);
+            tv_tahunlulus = (TextView) v.findViewById(R.id.tahun_lulus_txt);
+            delete_pendidikan = (Button) v.findViewById(R.id.btn_delete_pendidikan);
+
+
+        }
+    }
+
+
+}

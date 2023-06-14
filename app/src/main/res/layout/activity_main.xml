@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ivory"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtapp"
+        android:textColor="@color/black"
+        android:textSize="50px"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginTop="30dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        >
+
+        <!--
+        In the above cardview widget
+        cardelevation property will give elevation to your card view
+        card corner radius will provide radius to your card view
+        card background color will give background color to your card view
+        card max elevation will give the cardview maximum elevation
+        card prevent corner overlap will add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners.
+        card use compact padding will add padding in API v21+ as well to have the same measurements with previous versions.
+        below are the two widgets imageview and text view we are displaying inside our card view.
+        -->
+        <FrameLayout
+            android:id="@+id/create_cv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/light_grey"
+            android:clickable="true">
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="113dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/create_cv"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="0dp"
+            android:text="Create CV"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/profil_cv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="220dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/light_grey"
+            android:clickable="true"
+            android:gravity="right">
+            <ImageView
+                android:id="@+id/img2"
+                android:layout_width="113dp"
+                android:layout_height="110dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/profil"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="0dp"
+                android:text="Profil"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <Button
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:id="@+id/idbtngenerate"
+        android:background="@drawable/menu_right"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/black"
+        android:layout_gravity="right"
+
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

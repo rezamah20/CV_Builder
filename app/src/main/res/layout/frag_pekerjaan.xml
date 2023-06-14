@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail_user.EditKontakActivity"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputOutlinedDenseStyle"
+        android:id="@+id/nama_perusahaan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama Perusahaan"
+        android:text="Nama Perusahaan"
+        tools:ignore="MissingConstraints"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeErrorColor="@color/black"
+        android:textAppearance="@color/black"
+        app:shapeAppearance="@style/CustomShapeOVerlay"
+        android:enabled="true"
+        app:endIconMode="clear_text"
+        app:boxStrokeWidthFocused="2dp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:hintAnimationEnabled="true"
+        app:helperText="Isikan Nomor Handphone anda"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nama_perusahaan_et"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mulai_bekerja"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:hint="Mulai Bekerja"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:text="Mulai Bekerja"
+            android:textAppearance="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeErrorColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:helperText="Tanggal Mulai Bekerja"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nama_perusahaan"
+            app:shapeAppearance="@style/CustomShapeOVerlay"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/mulai_bekerja_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/akhir_bekerja"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:hint="Akhir Bekerja"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:text="Akhir Bekerja"
+            android:textAppearance="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeErrorColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:helperText="Tanggal Akhir Bekerja"
+            app:hintAnimationEnabled="true"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nama_perusahaan"
+            app:shapeAppearance="@style/CustomShapeOVerlay"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/akhir_bekerja_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/keterangan_bekerja"
+        style="?attr/textInputOutlinedDenseStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:hint="Keterangan"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:text="Keterangan"
+        android:textAppearance="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeErrorColor="@color/black"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconMode="clear_text"
+        app:hintAnimationEnabled="true"
+        app:hintTextColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:shapeAppearance="@style/CustomShapeOVerlay"
+        app:helperText="Keterangan Bekerja"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/keterangan_bekerja_et"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

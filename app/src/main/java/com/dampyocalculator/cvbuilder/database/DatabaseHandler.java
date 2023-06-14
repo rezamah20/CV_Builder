@@ -1,0 +1,122 @@
+package com.dampyocalculator.cvbuilder.database;
+
+import android.annotation.SuppressLint;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class DatabaseHandler extends SQLiteOpenHelper {
+
+    private static final int database_version = 1;
+
+    //database name
+    static final String database_name = "db_cvbuilder";
+    //table name
+    public static final String table_user = "tb_user";
+    public static final String table_contact = "tb_contact";
+    public static final String table_pendidikan = "tb_pendidikan";
+
+    //coloume table profil
+    public static final String key_id = "id";
+    public static final String key_name = "nama";
+    public static final String key_posisi = "posisi";
+    public static final String key_profil = "profil";
+    public static final String key_image = "image";
+
+    //colome table contact
+    public static final String primarykey_id_contact = "contact_id";
+    public static final String key_id_contact = "id";
+    public static final String key_notlpn = "no_tlpn";
+    public static final String key_email = "email";
+    public static final String alamat = "alamat";
+
+    //coloume table pendidikan
+    public static final String primarykey_id_pendidikan = "id_pendidikan";
+    public static final String key_id_pendidikan = "id";
+    public static final String key_nama_sekolah = "nama_sekolah";
+    public static final String key_nama_jurusan = "nama_jurusan";
+    public static final String key_tahun_masuk = "tahun_masuk";
+    public static final String key_tahun_lulus = "tahun_lulus";
+    public static final String key_keterangan_pendidikan = "keterangan_pendidikan";
+
+    public DatabaseHandler(Context context){
+        super(context, database_name, null, database_version);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db){
+        //table_user
+        String create_user_table = "CREATE TABLE " + table_user + "("+key_id+" INTEGER PRIMARY KEY autoincrement, "+key_name+" TEXT, "+key_posisi+" TEXT, "+key_profil+" TEXT, "+key_image+" TEXT)";
+        //table_contact
+        String create_contact_table = "CREATE TABLE " + table_contact + "("+primarykey_id_contact+" INTEGER PRIMARY KEY autoincrement, "+key_id_contact+" INTEGER, "+key_notlpn+" TEXT, "+key_email+" TEXT, "+alamat+" TEXT)";
+        //table_pendidikan
+        String create_pendidikan = "CREATE TABLE " + table_pendidikan + "("+primarykey_id_pendidikan+" INTEGER PRIMARY KEY autoincrement, "+key_id_pendidikan+" INTEGER, "+key_nama_sekolah+" TEXT, "+key_nama_jurusan+" TEXT, "+key_tahun_masuk+" TEXT, "+key_tahun_lulus+" TEXT, "+key_keterangan_pendidikan+" TEXT)";
+
+        db.execSQL(create_user_table);
+        db.execSQL(create_contact_table);
+        db.execSQL(create_pendidikan);
+    }
+
+    @Override
+    public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion){
+            //drop table profil
+            db.execSQL("DROP TABLE IF EXISTS " + table_user);
+            onCreate(db);
+
+            //drop table contact
+            db.execSQL("DROP TABLE IF EXISTS " + table_contact);
+            onCreate(db);
+
+            //drop table pendidikan
+            db.execSQL("DROP TABLE IF EXISTS " + table_pendidikan);
+            onCreate(db);
+
+    }
+
+    public ArrayList<usermodels> getAll(){
+        ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " +table_user;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            do {
+                usermodels usermodels = new usermodels();
+                usermodels.setId(String.valueOf(c.getInt(0)));
+                usermodels.setName(c.getString(1));
+                usermodels.setPosisi(c.getString(2));
+                usermodels.setProfil(c.getString(3));
+                usermodels.setImage(c.getString(4));
+                // adding to Students list
+                usermodelsArrayList.add(usermodels);
+            } while (c.moveToNext());
+        }
+        return usermodelsArrayList;
+    }
+
+
+
+    public void insert(String name, String posisi, String profil, String image){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "INSERT INTO " +table_user+"("+key_name+","+key_posisi+","+key_profil+","+key_image+")VALUES('"+name+"','"+posisi+"','"+profil+"','"+image+"')";
+        database.execSQL(query);
+    }
+
+    public void update (int id,String name, String posisi, String profil, String image){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "UPDATE "+table_user+" SET "+key_name+" = '"+name+"',"+key_posisi+" = '"+posisi+"',"+key_profil+" = '"+profil+"',"+key_image+" = '"+image+"' WHERE " +key_id+ " = " +id;
+        database.execSQL(query);
+    }
+
+    public void delete (String id){
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "DELETE FROM " +table_user+ " WHERE " +key_id+ " = " +id;
+        database.execSQL(query);
+    }
+}
