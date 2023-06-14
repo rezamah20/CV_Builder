@@ -83,7 +83,6 @@ public class PendidikanAdapter extends RecyclerView.Adapter<PendidikanAdapter.Pe
                         Toast.makeText(activity, "Hapus berhasil!", Toast.LENGTH_SHORT).show();
                         Intent myIntent = new Intent(activity, EditPendidikanActivity.class);
                         myIntent.putExtra("id", list.get(0).getId());
-                        Log.d("TAG Key ID", list.get(0).getId());
                         activity.startActivity(myIntent);
                         activity.finish();
                     }

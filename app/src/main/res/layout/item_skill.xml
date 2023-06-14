@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
             <ImageButton
+                android:id="@+id/hapus_skill"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:scaleType="centerInside"

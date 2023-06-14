@@ -87,10 +87,13 @@ public class EditPendidikanActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.frag_pendidikan, null);
+
         nama_sekolah_et = view.findViewById(R.id.nama_sekolah_et);
         nama_jurusan_et = view.findViewById(R.id.nama_jurusan_et);
         tahun_masuk_et = view.findViewById(R.id.tahun_masuk_et);
         tahun_lulus_et = view.findViewById(R.id.tahun_lulus_et);
+        keterangan_pendidikan_et = view.findViewById(R.id.keterangan_pendidikan_et);
+
         keterangan_pendidikan_et = view.findViewById(R.id.keterangan_pendidikan_et);
         builder.setView(view);
 
@@ -128,6 +131,12 @@ public class EditPendidikanActivity extends AppCompatActivity {
         values.put(DatabaseHandler.key_keterangan_pendidikan, keterangan_pendidikan);
 
         insert.insert(DatabaseHandler.table_pendidikan, null, values);
+
+        nama_sekolah_et.getText().clear();
+        nama_jurusan_et.getText().clear();
+        tahun_masuk_et.getText().clear();
+        tahun_lulus_et.getText().clear();
+        keterangan_pendidikan_et.getText().clear();
 
         list = getData();
         adapter.setListUser(list);

@@ -14,6 +14,9 @@ public class usermodels {
     String tahunlulus;
     String keteranganpendidikan;
 
+    String primarykeyskill;
+    String namaskill;
+
     // constructor
     //public usermodels(String id, String posisi, String nama){
     //    this.id = id;
@@ -109,5 +112,21 @@ public class usermodels {
 
     public void setKeteranganpendidikan(String keteranganpendidikan) {
         this.keteranganpendidikan = keteranganpendidikan;
+    }
+
+    public String getPrimarykeyskill() {
+        return primarykeyskill;
+    }
+
+    public void setPrimarykeyskill(String primarykeyskill) {
+        this.primarykeyskill = primarykeyskill;
+    }
+
+    public String getNamaskill() {
+        return namaskill;
+    }
+
+    public void setNamaskill(String namaskill) {
+        this.namaskill = namaskill;
     }
 }
