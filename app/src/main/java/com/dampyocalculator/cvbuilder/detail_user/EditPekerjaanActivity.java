@@ -24,8 +24,8 @@ import java.util.ArrayList;
 
 public class EditPekerjaanActivity extends AppCompatActivity {
     private Button tambah_pekerjaan;
-    private String id, key_id_perusaan, nama_perusahaan, tgl_mulai_bekerja, tgl_selesai_bekerja, keterangan_pengalaman;
-    private TextInputEditText nama_perusahaan_et, mulai_bekerja_et, akhir_bekerja_et, keterangan_bekerja_et;
+    private String id, key_id_perusaan, nama_perusahaan, jabatan_perusahaan, tgl_mulai_bekerja, tgl_selesai_bekerja, keterangan_pengalaman;
+    private TextInputEditText nama_perusahaan_et, jabatan_perusahaan_et, mulai_bekerja_et, akhir_bekerja_et, keterangan_bekerja_et;
     RecyclerView rv_frag_exp_list;
     private ArrayList<usermodels> list;
     AlertDialog alertDialog;
@@ -39,6 +39,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_pekerjaan);
 
         tambah_pekerjaan = (Button) findViewById(R.id.tambah_pengalaman);
+        rv_frag_exp_list = (RecyclerView) findViewById(R.id.rview_pengalaman);
         alertDialog = expFormDiaglog();
 
 
@@ -71,6 +72,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         View view = layoutInflater.inflate(R.layout.frag_pekerjaan, null);
 
         nama_perusahaan_et = view.findViewById(R.id.nama_perusahaan_et);
+        jabatan_perusahaan_et = view.findViewById(R.id.jabatan_pengalaman_et);
         mulai_bekerja_et = view.findViewById(R.id.mulai_bekerja_et);
         akhir_bekerja_et = view.findViewById(R.id.akhir_bekerja_et);
         keterangan_bekerja_et = view.findViewById(R.id.keterangan_bekerja_et);
@@ -96,6 +98,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         SQLiteDatabase insert = db.getWritableDatabase();
 
         nama_perusahaan = nama_perusahaan_et.getText().toString();
+        jabatan_perusahaan = jabatan_perusahaan_et.getText().toString();
         tgl_mulai_bekerja = mulai_bekerja_et.getText().toString();
         tgl_selesai_bekerja = akhir_bekerja_et.getText().toString();
         keterangan_pengalaman = keterangan_bekerja_et.getText().toString();
@@ -103,6 +106,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         ContentValues contentValues = new ContentValues();
         contentValues.put(DatabaseHandler.key_id_perusahaan, id);
         contentValues.put(DatabaseHandler.nama_perusahaan, nama_perusahaan);
+        contentValues.put(DatabaseHandler.jabatan_peng, jabatan_perusahaan);
         contentValues.put(DatabaseHandler.tgl_mulai_bekerja, tgl_mulai_bekerja);
         contentValues.put(DatabaseHandler.tgl_selesai_bekerja, tgl_selesai_bekerja);
         contentValues.put(DatabaseHandler.ket_pengalaman, keterangan_pengalaman);
@@ -127,6 +131,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         Cursor c = ReadData.rawQuery("SELECT "+DatabaseHandler.primarykey_pengalaman+", "
                 + DatabaseHandler.table_pengalaman+"."+DatabaseHandler.key_id_perusahaan+", "
                 + DatabaseHandler.nama_perusahaan+", "
+                + DatabaseHandler.jabatan_peng+", "
                 + DatabaseHandler.tgl_mulai_bekerja+", "
                 + DatabaseHandler.tgl_selesai_bekerja+", "
                 + DatabaseHandler.ket_pengalaman+
@@ -139,10 +144,12 @@ public class EditPekerjaanActivity extends AppCompatActivity {
                 usermodels usermodels = new usermodels();
 
                 usermodels.setKeyidpengalaman(c.getString(0));
-                usermodels.setNama_pengalaman(c.getString(1));
-                usermodels.setTgl_masuk_peng(c.getString(2));
-                usermodels.setTgl_selesai_peng(c.getString(3));
-                usermodels.setKet_peng(c.getString(4));
+                usermodels.setId(c.getString(1));
+                usermodels.setNama_pengalaman(c.getString(2));
+                usermodels.setJabaran_pengalaman(c.getString(3));
+                usermodels.setTgl_masuk_peng(c.getString(4));
+                usermodels.setTgl_selesai_peng(c.getString(5));
+                usermodels.setKet_peng(c.getString(6));
 
                 arrayList.add(usermodels);
 

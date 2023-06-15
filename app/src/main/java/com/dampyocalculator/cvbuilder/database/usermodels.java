@@ -25,6 +25,7 @@ public class usermodels {
     String primarykeypengalaman;
     String keyidpengalaman;
     String nama_pengalaman;
+    String jabaran_pengalaman;
     String tgl_masuk_peng;
     String tgl_selesai_peng;
     String ket_peng;
@@ -196,6 +197,14 @@ public class usermodels {
 
     public void setNama_pengalaman(String nama_pengalaman) {
         this.nama_pengalaman = nama_pengalaman;
+    }
+
+    public String getJabaran_pengalaman() {
+        return jabaran_pengalaman;
+    }
+
+    public void setJabaran_pengalaman(String jabaran_pengalaman) {
+        this.jabaran_pengalaman = jabaran_pengalaman;
     }
 
     public String getTgl_masuk_peng() {
