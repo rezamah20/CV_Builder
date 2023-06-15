@@ -22,6 +22,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String table_contact = "tb_contact";
     public static final String table_pendidikan = "tb_pendidikan";
     public static final String table_skill = "tb_skill";
+    public static final String table_bahasa = "tb_bahasa";
 
     //coloume table profil
     public static final String key_id = "id";
@@ -51,6 +52,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String key_id_skill ="id";
     public static final String nama_skill = "nama_skill";
 
+    //colume table bahasa
+    public static final String primarykey_bahasa = "id_bahasa";
+    public static final String key_id_bahasa = "id";
+    public static final String nama_bahasa = "nama_bahasa";
+    public static final String level_bahasa = "level_bahasa";
+
 
     public DatabaseHandler(Context context){
         super(context, database_name, null, database_version);
@@ -64,13 +71,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String create_contact_table = "CREATE TABLE " + table_contact + "("+primarykey_id_contact+" INTEGER PRIMARY KEY autoincrement, "+key_id_contact+" INTEGER, "+key_notlpn+" TEXT, "+key_email+" TEXT, "+alamat+" TEXT)";
         //table_pendidikan
         String create_pendidikan = "CREATE TABLE " + table_pendidikan + "("+primarykey_id_pendidikan+" INTEGER PRIMARY KEY autoincrement, "+key_id_pendidikan+" INTEGER, "+key_nama_sekolah+" TEXT, "+key_nama_jurusan+" TEXT, "+key_tahun_masuk+" TEXT, "+key_tahun_lulus+" TEXT, "+key_keterangan_pendidikan+" TEXT)";
-
+        //table_skill
         String create_skill = "CREATE TABLE " + table_skill + "("+primarykey_id_skill+" INTEGER PRIMARY KEY autoincrement, "+key_id_skill+" TEXT, "+nama_skill+" TEXT)";
+        //table_bahasa
+        String create_bahasa = "CREATE TABLE " + table_bahasa + "("+primarykey_bahasa+" INTEGER PRIMARY KEY autoincrement, "+key_id_bahasa+" INTEGER, "+nama_bahasa+" TEXT, "+level_bahasa+" TEXT)";
+
+
 
         db.execSQL(create_user_table);
         db.execSQL(create_contact_table);
         db.execSQL(create_pendidikan);
         db.execSQL(create_skill);
+        db.execSQL(create_bahasa);
     }
 
     @Override
@@ -89,6 +101,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
             //drop table skill
             db.execSQL("DROP TABLE IF EXISTS " + table_skill);
+            onCreate(db);
+
+            //drop table bahsa
+            db.execSQL("DROP TABLE IF EXISTS " + table_bahasa);
             onCreate(db);
     }
 

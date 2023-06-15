@@ -17,6 +17,11 @@ public class usermodels {
     String primarykeyskill;
     String namaskill;
 
+    String primarykeybahasa;
+    String keyidbahasa;
+    String nama_bahasa;
+    String level_bahasa;
+
     // constructor
     //public usermodels(String id, String posisi, String nama){
     //    this.id = id;
@@ -128,5 +133,37 @@ public class usermodels {
 
     public void setNamaskill(String namaskill) {
         this.namaskill = namaskill;
+    }
+
+    public String getPrimarykeybahasa() {
+        return primarykeybahasa;
+    }
+
+    public void setPrimarykeybahasa(String primarykeybahasa) {
+        this.primarykeybahasa = primarykeybahasa;
+    }
+
+    public String getKeyidbahasa() {
+        return keyidbahasa;
+    }
+
+    public void setKeyidbahasa(String keyidbahasa) {
+        this.keyidbahasa = keyidbahasa;
+    }
+
+    public String getNama_bahasa() {
+        return nama_bahasa;
+    }
+
+    public void setNama_bahasa(String nama_bahasa) {
+        this.nama_bahasa = nama_bahasa;
+    }
+
+    public String getLevel_bahasa() {
+        return level_bahasa;
+    }
+
+    public void setLevel_bahasa(String level_bahasa) {
+        this.level_bahasa = level_bahasa;
     }
 }

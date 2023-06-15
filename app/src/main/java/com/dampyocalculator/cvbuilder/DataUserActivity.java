@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
+import com.dampyocalculator.cvbuilder.detail_user.EditBahasaActivity;
 import com.dampyocalculator.cvbuilder.detail_user.EditKontakActivity;
 import com.dampyocalculator.cvbuilder.detail_user.EditPekerjaanActivity;
 import com.dampyocalculator.cvbuilder.detail_user.EditPendidikanActivity;
@@ -27,7 +28,7 @@ import java.util.Objects;
 public class DataUserActivity extends AppCompatActivity {
     private ImageView imageView;
     private String image, id, nama, posisi, profil;
-    private Button edit_profil, edit_kontak, edit_pendidikan, edit_skill, edit_pengalaman;
+    private Button edit_profil, edit_kontak, edit_pendidikan, edit_skill, edit_bahasa ,edit_pengalaman;
     private DatabaseHandler db;
 
 
@@ -44,6 +45,7 @@ public class DataUserActivity extends AppCompatActivity {
         edit_pendidikan = (Button) findViewById(R.id.edit_pendidikan);
         edit_skill = (Button) findViewById(R.id.edit_skill);
         edit_pengalaman = (Button) findViewById(R.id.edit_pengalaman);
+        edit_bahasa = (Button) findViewById(R.id.edit_bahasa);
 
         image = getIntent().getStringExtra("foto");
 
@@ -96,6 +98,15 @@ public class DataUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DataUserActivity.this, EditSkillActivity.class);
+                intent.putExtra("id", id);
+                DataUserActivity.this.startActivity(intent);
+            }
+        });
+
+        edit_bahasa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DataUserActivity.this, EditBahasaActivity.class);
                 intent.putExtra("id", id);
                 DataUserActivity.this.startActivity(intent);
             }

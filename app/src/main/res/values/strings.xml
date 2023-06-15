@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CV Builder</string>
+
+    <string-array name="level_bahasa">
+        <item>Level Bahasa</item>
+        <item>Pemula</item>
+        <item>Advance</item>
+        <item>Senior</item>
+        <item>Bahasa Ibu</item>
+    </string-array>
 </resources>
