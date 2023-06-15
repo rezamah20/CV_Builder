@@ -1,6 +1,7 @@
 package com.dampyocalculator.cvbuilder.detail_user;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
@@ -42,6 +43,16 @@ public class EditPekerjaanActivity extends AppCompatActivity {
 
 
         id = getIntent().getStringExtra("id");
+
+        adapter = new PengalamanAdapter(this,this);
+
+        db.getReadableDatabase();
+        list = getData();
+        adapter.setListUser(list);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(EditPekerjaanActivity.this);
+        rv_frag_exp_list.setLayoutManager(layoutManager);
+        rv_frag_exp_list.setAdapter(adapter);
 
 
         tambah_pekerjaan.setOnClickListener(new View.OnClickListener() {
