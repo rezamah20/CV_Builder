@@ -22,6 +22,13 @@ public class usermodels {
     String nama_bahasa;
     String level_bahasa;
 
+    String primarykeypengalaman;
+    String keyidpengalaman;
+    String nama_pengalaman;
+    String tgl_masuk_peng;
+    String tgl_selesai_peng;
+    String ket_peng;
+
     // constructor
     //public usermodels(String id, String posisi, String nama){
     //    this.id = id;
@@ -165,5 +172,53 @@ public class usermodels {
 
     public void setLevel_bahasa(String level_bahasa) {
         this.level_bahasa = level_bahasa;
+    }
+
+    public String getPrimarykeypengalaman() {
+        return primarykeypengalaman;
+    }
+
+    public void setPrimarykeypengalaman(String primarykeypengalaman) {
+        this.primarykeypengalaman = primarykeypengalaman;
+    }
+
+    public String getKeyidpengalaman() {
+        return keyidpengalaman;
+    }
+
+    public void setKeyidpengalaman(String keyidpengalaman) {
+        this.keyidpengalaman = keyidpengalaman;
+    }
+
+    public String getNama_pengalaman() {
+        return nama_pengalaman;
+    }
+
+    public void setNama_pengalaman(String nama_pengalaman) {
+        this.nama_pengalaman = nama_pengalaman;
+    }
+
+    public String getTgl_masuk_peng() {
+        return tgl_masuk_peng;
+    }
+
+    public void setTgl_masuk_peng(String tgl_masuk_peng) {
+        this.tgl_masuk_peng = tgl_masuk_peng;
+    }
+
+    public String getTgl_selesai_peng() {
+        return tgl_selesai_peng;
+    }
+
+    public void setTgl_selesai_peng(String tgl_selesai_peng) {
+        this.tgl_selesai_peng = tgl_selesai_peng;
+    }
+
+    public String getKet_peng() {
+        return ket_peng;
+    }
+
+    public void setKet_peng(String ket_peng) {
+        this.ket_peng = ket_peng;
     }
 }
