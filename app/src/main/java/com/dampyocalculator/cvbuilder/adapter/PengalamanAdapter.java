@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dampyocalculator.cvbuilder.R;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
+import com.dampyocalculator.cvbuilder.detail_user.EditPekerjaanActivity;
 import com.dampyocalculator.cvbuilder.detail_user.EditPendidikanActivity;
 
 import java.util.ArrayList;
@@ -54,12 +55,12 @@ public class PengalamanAdapter extends RecyclerView.Adapter<PengalamanAdapter.Pe
 
     @Override
     public void onBindViewHolder(@NonNull PengalamanViewHolder holder, int position) {
-        holder.nama_pengalaman.setText(list.get(position).getNamasekolah());
-        holder.jabatan_pengalaman.setText(list.get(position).getNamajurusan());
-        holder.tgl_masuk.setText(list.get(position).getTahunmasuk());
-        holder.tgl_keluar.setText(list.get(position).getTahunlulus());
+        holder.nama_pengalaman.setText(list.get(position).getNama_pengalaman());
+        holder.jabatan_pengalaman.setText(list.get(position).getJabaran_pengalaman());
+        holder.tgl_masuk.setText(list.get(position).getTgl_masuk_peng());
+        holder.tgl_keluar.setText(list.get(position).getTgl_selesai_peng());
 
-        holder.id_pengalaman = list.get(position).getPrimarykeypendidikanar();
+        holder.id_pengalaman = list.get(position).getPrimarykeypengalaman();
         holder.key_id = list.get(position).getId();
 
         holder.delete_pengalaman.setOnClickListener(new View.OnClickListener() {
@@ -73,12 +74,11 @@ public class PengalamanAdapter extends RecyclerView.Adapter<PengalamanAdapter.Pe
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         databaseHandler = new DatabaseHandler(context);
-
                         SQLiteDatabase delete = databaseHandler.getWritableDatabase();
                         String query = "DELETE FROM " +DatabaseHandler.table_pengalaman+ " WHERE " +DatabaseHandler.primarykey_pengalaman+ " = " +holder.id_pengalaman;
                         delete.execSQL(query);
                         Toast.makeText(activity, "Hapus berhasil!", Toast.LENGTH_SHORT).show();
-                        Intent myIntent = new Intent(activity, EditPendidikanActivity.class);
+                        Intent myIntent = new Intent(activity, EditPekerjaanActivity.class);
                         myIntent.putExtra("id", list.get(0).getId());
                         activity.startActivity(myIntent);
                         activity.finish();

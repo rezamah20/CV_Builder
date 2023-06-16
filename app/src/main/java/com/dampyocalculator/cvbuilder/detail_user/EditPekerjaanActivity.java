@@ -1,16 +1,22 @@
 package com.dampyocalculator.cvbuilder.detail_user;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,6 +27,7 @@ import com.dampyocalculator.cvbuilder.database.usermodels;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class EditPekerjaanActivity extends AppCompatActivity {
     private Button tambah_pekerjaan;
@@ -59,7 +66,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         tambah_pekerjaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                alertDialog.show();
             }
         });
 
@@ -88,8 +95,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         builder.setPositiveButton("Simpan", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
+                saveData();            }
         });
         return builder.create();
     }
@@ -135,7 +141,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
                 + DatabaseHandler.tgl_mulai_bekerja+", "
                 + DatabaseHandler.tgl_selesai_bekerja+", "
                 + DatabaseHandler.ket_pengalaman+
-                " FROM " + DatabaseHandler.table_pengalaman+
+                " FROM " + DatabaseHandler.table_user+
                 " INNER JOIN " + DatabaseHandler.table_pengalaman+ " on " + DatabaseHandler.table_pengalaman +"."+DatabaseHandler.key_id+ " = " + DatabaseHandler.table_user+"."+DatabaseHandler.key_id+
                 " WHERE " +DatabaseHandler.table_user+"."+DatabaseHandler.key_id+ " = " +id, null);
 
@@ -143,7 +149,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
             do {
                 usermodels usermodels = new usermodels();
 
-                usermodels.setKeyidpengalaman(c.getString(0));
+                usermodels.setPrimarykeypengalaman(c.getString(0));
                 usermodels.setId(c.getString(1));
                 usermodels.setNama_pengalaman(c.getString(2));
                 usermodels.setJabaran_pengalaman(c.getString(3));
@@ -158,6 +164,41 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         return arrayList;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.optionmenu, menu);
+        getMenuInflater().inflate(R.menu.action_share, menu);
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar);
+        MenuCompat.setGroupDividerEnabled(menu, true);
+        return true;
+    }
 
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.shareButton:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Create Your CV Resume";
+                String shareSubject = "Thanks for Sharing this app";
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+                startActivity(Intent.createChooser(sharingIntent, "Create Your CV Resume"));
+                return true;
+            case R.id.more_app:
+                Uri uri = Uri.parse("https://play.google.com/store/apps/dev?id=7965844334266665422");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                return true;
+            case R.id.privacy_policy:
+                Uri uri2 = Uri.parse("https://pages.flycricket.io/cleaner-whatsapp/privacy.html");
+                Intent intent2 = new Intent(Intent.ACTION_VIEW, uri2);
+                startActivity(intent2);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
 }

@@ -86,7 +86,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //table_bahasa
         String create_bahasa = "CREATE TABLE " + table_bahasa + "("+primarykey_bahasa+" INTEGER PRIMARY KEY autoincrement, "+key_id_bahasa+" INTEGER, "+nama_bahasa+" TEXT, "+level_bahasa+" TEXT)";
         //table_pengalaman
-        String create_pengalaman = "CREATE TABLE " + table_pengalaman + "("+primarykey_pengalaman+" INTEGER PRIMARY KEY autoincrement, "+key_id_perusahaan+" INTEGER, "+nama_perusahaan+" TEXT, "+jabatan_peng+" TEXT,"+tgl_mulai_bekerja+" TEXT, "+key_tahun_masuk+" TEXT, "+tgl_selesai_bekerja+" TEXT, "+ket_pengalaman+" TEXT)";
+        String create_pengalaman = "CREATE TABLE " + table_pengalaman + "("+primarykey_pengalaman+" INTEGER PRIMARY KEY autoincrement, "+key_id_perusahaan+" INTEGER, "+nama_perusahaan+" TEXT, "+jabatan_peng+" TEXT,"+tgl_mulai_bekerja+" TEXT, "+tgl_selesai_bekerja+" TEXT, "+ket_pengalaman+" TEXT)";
 
 
         db.execSQL(create_user_table);

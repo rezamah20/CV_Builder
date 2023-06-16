@@ -28,7 +28,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         app:hintAnimationEnabled="true"
-        app:helperText="Isikan Nomor Handphone anda"
+        app:helperText="Isikan Nama Perusahaan"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -45,8 +45,8 @@
         android:id="@+id/jabatan_perusahaan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama Perusahaan"
-        android:text="Nama Perusahaan"
+        android:hint="Jabatan"
+        android:text="Jabatan"
         tools:ignore="MissingConstraints"
         app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/black"
@@ -60,7 +60,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         app:hintAnimationEnabled="true"
-        app:helperText="Isikan Nomor Handphone anda"
+        app:helperText="Isikan Jabatan"
         >
 
         <com.google.android.material.textfield.TextInputEditText
