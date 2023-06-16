@@ -40,6 +40,8 @@ public class CreateCvActivity extends AppCompatActivity {
     //template cv
     private List<String> listtemplate;
     private List<Integer> imglisttemplate;
+    private List<String> id_tempalte;
+    private String id_temp_txt;
     Spinner choose_template;
     private ArrayAdapter<String> arraytemplate;
     ImageView previewtemplate;
@@ -69,7 +71,7 @@ public class CreateCvActivity extends AppCompatActivity {
         test_nama.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(CreateCvActivity.this, "ID Dipilih " +id, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateCvActivity.this, "ID Dipilih " +id+ ", ID Template " +id_temp_txt, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,7 +99,6 @@ public class CreateCvActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 id = id_user.get(position);
                 nama = nama_user.get(position);
-                Toast.makeText(CreateCvActivity.this, "Anda Memilih ID: "+id+", Nama: "+nama, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -113,6 +114,7 @@ public class CreateCvActivity extends AppCompatActivity {
         listtemplate.add("Template 2");
 
         imglisttemplate = new ArrayList<>();
+        id_tempalte = new ArrayList<>();
         arraytemplate = new ArrayAdapter<>(CreateCvActivity.this, R.layout.mytextview, listtemplate);
         choose_template.setAdapter(arraytemplate);
 
@@ -120,6 +122,7 @@ public class CreateCvActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 previewtemplate.setImageResource(imglisttemplate.get(i));
+                id_temp_txt = id_tempalte.get(i);
             }
 
             @Override
@@ -130,6 +133,9 @@ public class CreateCvActivity extends AppCompatActivity {
 
         imglisttemplate.add(R.drawable.preview_cv1);
         imglisttemplate.add(R.drawable.cvtemplate2);
+
+        id_tempalte.add("1");
+        id_tempalte.add("2");
 
     }
 
