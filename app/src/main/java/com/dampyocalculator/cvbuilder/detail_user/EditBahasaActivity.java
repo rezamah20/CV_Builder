@@ -56,6 +56,7 @@ public class EditBahasaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_bahasa);
 
         tambah_bahasa = (Button) findViewById(R.id.tambah_bahasa);
+
         rv_frag_exp_list =findViewById(R.id.rview_bahasa);
 
         alertDialog = expFormDiaglog();

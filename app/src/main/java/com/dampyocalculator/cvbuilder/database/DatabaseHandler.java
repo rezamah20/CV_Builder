@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import com.dampyocalculator.cvbuilder.template.TemplateFrag;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -72,6 +74,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public DatabaseHandler(Context context){
         super(context, database_name, null, database_version);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db){

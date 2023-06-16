@@ -3,6 +3,7 @@ package com.dampyocalculator.cvbuilder;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuCompat;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 import com.dampyocalculator.cvbuilder.adapter.UserAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
+import com.dampyocalculator.cvbuilder.template.TemplateActivity;
+import com.dampyocalculator.cvbuilder.template.TemplateFrag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,7 @@ public class CreateCvActivity extends AppCompatActivity {
     Spinner choose_template;
     private ArrayAdapter<String> arraytemplate;
     ImageView previewtemplate;
+    private Fragment demoInvoiceFragment;
 
 
     @Override
@@ -62,6 +66,7 @@ public class CreateCvActivity extends AppCompatActivity {
         list.clear();
         list = databaseHandler.getAll();
 
+        demoInvoiceFragment = new TemplateFrag(this, this);
 
         getData();
         getTemplate();
@@ -71,7 +76,17 @@ public class CreateCvActivity extends AppCompatActivity {
         test_nama.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(CreateCvActivity.this, "ID Dipilih " +id+ ", ID Template " +id_temp_txt, Toast.LENGTH_SHORT).show();
+                //Intent intent = new Intent(CreateCvActivity.this, TemplateActivity.class);
+               // intent.putExtra("id", id);
+               // intent.putExtra("tmp", id_temp_txt);
+               // CreateCvActivity.this.startActivity(intent);
+               // Toast.makeText(CreateCvActivity.this, "ID Dipilih " +id+ ", ID Template " +id_temp_txt, Toast.LENGTH_SHORT).show();
+                if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
+                    getSupportFragmentManager().beginTransaction()
+                            .add(android.R.id.content, demoInvoiceFragment)
+                            .commit();
+                }
+
             }
         });
     }
@@ -86,7 +101,6 @@ public class CreateCvActivity extends AppCompatActivity {
             id_user.add(list.get(i).getId());
             nama_user.add(list.get(i).getNama()+" - " +list.get(i).getPosisi());
             System.out.println("data 2 "+list.get(i).getNama());
-
         }
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(CreateCvActivity.this,
