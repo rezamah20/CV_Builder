@@ -18,6 +18,10 @@
         android:theme="@style/Theme.CVBuilder"
         tools:targetApi="31">
         <activity
+            android:name=".CreateCvActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Design.Light" />
+        <activity
             android:name=".detail_user.EditBahasaActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />

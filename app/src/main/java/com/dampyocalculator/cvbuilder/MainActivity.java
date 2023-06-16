@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         create_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Edit_Activity.class);
+                Intent intent = new Intent(MainActivity.this, CreateCvActivity.class);
                 MainActivity.this.startActivity(intent);
             }
         });

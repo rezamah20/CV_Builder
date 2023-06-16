@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/light/test/app/src/main/res/drawable/spiner_bg.xml" value="0.1565" />
+        <entry key="..\:/light/test/app/src/main/res/layout/activity_create_cv.xml" value="0.17249240121580547" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_bahasa.xml" value="0.17249240121580547" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_pekerjaan.xml" value="0.17249240121580547" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_pendidikan.xml" value="0.16530797101449277" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_skill.xml" value="0.16530797101449277" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_list_user.xml" value="0.1375" />
+        <entry key="..\:/light/test/app/src/main/res/layout/activity_main.xml" value="0.18478260869565216" />
         <entry key="..\:/light/test/app/src/main/res/layout/frag_bahasa.xml" value="0.17198581560283688" />
         <entry key="..\:/light/test/app/src/main/res/layout/frag_pekerjaan.xml" value="0.25" />
         <entry key="..\:/light/test/app/src/main/res/layout/frag_pendidikan.xml" value="0.25" />
