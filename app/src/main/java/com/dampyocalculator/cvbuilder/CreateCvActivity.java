@@ -1,12 +1,19 @@
 package com.dampyocalculator.cvbuilder;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuCompat;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -16,6 +23,7 @@ import com.dampyocalculator.cvbuilder.database.usermodels;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CreateCvActivity extends AppCompatActivity {
     Spinner choose_profil;
@@ -26,17 +34,26 @@ public class CreateCvActivity extends AppCompatActivity {
     private List<String> id_user;
     private List<String> nama_user;
     private List<String> jabatan;
-    private String id, nama, jabatan_txt;
 
+    private String id, nama;
 
+    //template cv
+    private List<String> listtemplate;
+    private List<Integer> imglisttemplate;
+    Spinner choose_template;
+    private ArrayAdapter<String> arraytemplate;
+    ImageView previewtemplate;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_cv);
+       setContentView(R.layout.activity_create_cv);
 
         choose_profil = (Spinner) findViewById(R.id.choose_profil);
+        choose_template = (Spinner) findViewById(R.id.choose_template);
+        previewtemplate = (ImageView) findViewById(R.id.imgtemplate);
+
         test_nama = (Button) findViewById(R.id.test_nama);
         userAdapter = new UserAdapter(this, this);
         databaseHandler = new DatabaseHandler(this);
@@ -45,6 +62,10 @@ public class CreateCvActivity extends AppCompatActivity {
 
 
         getData();
+        getTemplate();
+
+
+
         test_nama.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +75,6 @@ public class CreateCvActivity extends AppCompatActivity {
     }
 
     private void getData(){
-
         id_user = new ArrayList<String>();
         nama_user = new ArrayList<String>();
         jabatan = new ArrayList<String>();
@@ -68,7 +88,7 @@ public class CreateCvActivity extends AppCompatActivity {
         }
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(CreateCvActivity.this,
-                android.R.layout.simple_spinner_item, nama_user);
+                R.layout.mytextview, nama_user);
         spinnerAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
 
         choose_profil.setAdapter(spinnerAdapter);
@@ -85,37 +105,69 @@ public class CreateCvActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void getTemplate(){
+        listtemplate = new ArrayList<>();
 
-        /*String selectQuery = "SELECT * FROM " +DatabaseHandler.table_user;
-        SQLiteDatabase db = databaseHandler.getReadableDatabase();
-        ArrayList<String>labels= new ArrayList<>();
-        Cursor cursor=db.rawQuery(selectQuery,null);
-        id = new String[cursor.getCount()];
-        nama = new String[cursor.getCount()];
-        cursor.moveToFirst();
-        for (i = 0; i<nama.length;i++)
-        {
-            id[i] = cursor.getString(0);
-            nama[i] = cursor.getString(1);
-            testnamatxt = nama[i];
-            test_id = id[i];
-            labels.add(test_id + testnamatxt);
-            cursor.moveToNext();
-        }
+        listtemplate.add("Template 1");
+        listtemplate.add("Template 2");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, labels);
-        dataAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        choose_profil.setAdapter(dataAdapter);
-*/
-       // if (cursor.moveToFirst()){
-        //    do{
-        //        labels.add(cursor.getString(1)+" - "+cursor.getString(2));
-        //    }while (cursor.moveToNext());
-        //}
-        //cursor.close();
-        //db.close();
-        //return labels;
+        imglisttemplate = new ArrayList<>();
+        arraytemplate = new ArrayAdapter<>(CreateCvActivity.this, R.layout.mytextview, listtemplate);
+        choose_template.setAdapter(arraytemplate);
+
+        choose_template.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                previewtemplate.setImageResource(imglisttemplate.get(i));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        imglisttemplate.add(R.drawable.preview_cv1);
+        imglisttemplate.add(R.drawable.cvtemplate2);
+
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.optionmenu, menu);
+        getMenuInflater().inflate(R.menu.action_share, menu);
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar);
+        MenuCompat.setGroupDividerEnabled(menu, true);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.shareButton:
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Create Your CV Resume";
+                String shareSubject = "Thanks for Sharing this app";
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+                startActivity(Intent.createChooser(sharingIntent, "Create Your CV Resume"));
+                return true;
+            case R.id.more_app:
+                Uri uri = Uri.parse("https://play.google.com/store/apps/dev?id=7965844334266665422");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                return true;
+            case R.id.privacy_policy:
+                Uri uri2 = Uri.parse("https://pages.flycricket.io/cleaner-whatsapp/privacy.html");
+                Intent intent2 = new Intent(Intent.ACTION_VIEW, uri2);
+                startActivity(intent2);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
