@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dampyocalculator.cvbuilder.CreateCvActivity;
 import com.dampyocalculator.cvbuilder.R;
 import com.dampyocalculator.cvbuilder.adapter.Tmp1PenAdapter;
+import com.dampyocalculator.cvbuilder.adapter.Tmp1PengAdapter;
 import com.dampyocalculator.cvbuilder.adapter.TmpAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
@@ -54,9 +55,10 @@ public class TemplateFrag extends Fragment {
     Context context;
     ComponentActivity activity;
     private PdfGenerator.XmlToPDFLifecycleObserver xmlToPDFLifecycleObserver;
-    RecyclerView rv_frag_exp_list, tmp1_rv_frag_pend_list;
+    RecyclerView rv_frag_exp_list, tmp1_rv_frag_pend_list, tmp1_rv_frag_peng_list;
     private TmpAdapter adapter;
     private Tmp1PenAdapter tmp1penAdapter;
+    private Tmp1PengAdapter tmp1pengAdapter;
 
     String id;
     TextView tvskill;
@@ -84,6 +86,8 @@ public class TemplateFrag extends Fragment {
         imageView = (ImageView) root.findViewById(R.id.tmp1_imgview);
         rv_frag_exp_list = root.findViewById(R.id.rview_template);
         tmp1_rv_frag_pend_list = root.findViewById(R.id.tmp1_rview_pendidikan);
+        tmp1_rv_frag_peng_list = root.findViewById(R.id.tmp1_rview_pengalaman);
+
 
         id = CreateCvActivity.getMyData();
 
@@ -124,11 +128,17 @@ public class TemplateFrag extends Fragment {
         tmp1_rv_frag_pend_list.setLayoutManager(layoutManagerpen);
         tmp1_rv_frag_pend_list.setAdapter(tmp1penAdapter);
 
-       // RecyclerView.LayoutManager layoutManager
-        //        = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-
-
-
+        //pengalaman
+        tmp1pengAdapter = new Tmp1PengAdapter(activity, context);
+        list.clear();
+        list = databaseHandler.getDataPeng(id);
+        tmp1pengAdapter.setListUser(list);
+        databaseHandler = new DatabaseHandler(context);
+        id = CreateCvActivity.getMyData();
+        tmp1_rv_frag_peng_list.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManagerpeng = new LinearLayoutManager(context);
+        tmp1_rv_frag_peng_list.setLayoutManager(layoutManagerpeng);
+        tmp1_rv_frag_peng_list.setAdapter(tmp1pengAdapter);
 
         xmlToPDFLifecycleObserver = new PdfGenerator.XmlToPDFLifecycleObserver((ComponentActivity) activity);
         getLifecycle().addObserver(xmlToPDFLifecycleObserver);

@@ -239,6 +239,24 @@
                     android:orientation="horizontal"
                     android:paddingLeft="0dp"
                     android:paddingTop="4dp">
+                    <LinearLayout
+                        android:layout_width="199dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                    <TextView
+                        android:layout_width="153dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="PENGALAMAN"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="175dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="@color/black" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/tmp1_rview_pengalaman"
@@ -246,6 +264,7 @@
                         android:layout_height="340dp"
                         android:paddingLeft="0dp"
                         tools:ignore="MissingConstraints" />
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>

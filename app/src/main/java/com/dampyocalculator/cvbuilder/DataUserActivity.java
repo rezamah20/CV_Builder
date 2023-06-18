@@ -58,10 +58,6 @@ public class DataUserActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DataUserActivity.this, Edit_Activity.class);
                 intent.putExtra("id", id);
-                //intent.putExtra("nama", nama);
-                //intent.putExtra("posisi", posisi);
-                //intent.putExtra("profil", profil);
-                //intent.putExtra("foto", image);
                 DataUserActivity.this.startActivity(intent);
             }
         });

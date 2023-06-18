@@ -87,6 +87,9 @@ public class PendidikanAdapter extends RecyclerView.Adapter<PendidikanAdapter.Pe
                         activity.finish();
                     }
                 });
+
+
+
                 builder.setNegativeButton("Tidak", null);
                 AlertDialog alert = builder.create();
                 alert.show();
