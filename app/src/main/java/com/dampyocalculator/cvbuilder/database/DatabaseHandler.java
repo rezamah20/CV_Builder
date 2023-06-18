@@ -128,7 +128,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<usermodels> getAll(){
         ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
-        String selectQuery = "SELECT * FROM " +table_user;
+        String selectQuery = "SELECT * FROM " +table_user ;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
 
@@ -146,6 +146,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return usermodelsArrayList;
     }
+    public ArrayList<usermodels> getDataUser(String id){
+        ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
+        SQLiteDatabase ReadData = this.getReadableDatabase();
+
+        Cursor c =ReadData.rawQuery("SELECT tb_user.id, tb_user.nama, tb_user.posisi, tb_user.profil, tb_user.image, tb_skill.id_skill, tb_skill.nama_skill, tb_contact.no_tlpn, tb_contact.email, tb_contact.alamat FROM tb_user " +
+                "LEFT JOIN tb_skill on tb_user.id = tb_skill.id " +
+                "LEFT JOIN tb_contact on tb_user.id = tb_contact.id WHERE tb_user.id = "+id, null);
+        if (c.moveToFirst()) {
+            do {
+
+                usermodels usermodels = new usermodels();
+                usermodels.setId(c.getString(0));
+                usermodels.setName(c.getString(1));
+                usermodels.setPosisi(c.getString(2));
+                usermodels.setProfil(c.getString(3));
+                usermodels.setImage(c.getString(4));
+                usermodels.setNamaskill(c.getString(6));
+                usermodels.setNotlpn(c.getString(7));
+                usermodels.setEmail(c.getString(8));
+                usermodels.setAlamat(c.getString(9));
+                usermodelsArrayList.add(usermodels);
+
+            }while (c.moveToNext());
+        }
+        return usermodelsArrayList;
+    }
+
 
 
 

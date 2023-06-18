@@ -28,6 +28,7 @@ public class TmpAdapter extends RecyclerView.Adapter<TmpAdapter.TmpViewHolder> {
     Activity activity;
     Context context;
     private ArrayList<usermodels> list = new ArrayList<>();
+
     private DatabaseHandler databaseHandler;
     RecyclerView mRecyclerView;
     View view;
@@ -54,10 +55,9 @@ public class TmpAdapter extends RecyclerView.Adapter<TmpAdapter.TmpViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TmpViewHolder holder, int position) {
-        holder.tv_nametmp.setText(list.get(position).getNama());
-        holder.tv_posisitmp.setText(list.get(position).getPosisi());
-        Log.d("tag test", list.get(position).getNama());
-
+       // holder.tv_nametmp.setText(list.get(position).getNama());
+       // holder.tv_posisitmp.setText(list.get(position).getPosisi());
+        holder.skill.setText(list.get(position).getNamaskill());
 
     }
 
@@ -66,15 +66,18 @@ public class TmpAdapter extends RecyclerView.Adapter<TmpAdapter.TmpViewHolder> {
         return list.size();
     }
 
+
+
     public class TmpViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_nametmp, tv_posisitmp;
-        Button generate;
+        TextView tv_nametmp, tv_posisitmp, skill;
 
         public TmpViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_nametmp = (TextView) itemView.findViewById(R.id.tv_item_nama_tmp);
-            tv_posisitmp = (TextView) itemView.findViewById(R.id.tv_item_posisi_tmp);
+           // tv_nametmp = (TextView) itemView.findViewById(R.id.tv_item_nama_tmp);
+           // tv_posisitmp = (TextView) itemView.findViewById(R.id.tv_item_posisi_tmp);
+            skill = (TextView) itemView.findViewById(R.id.tv_item_nohp_tmp);
+
 
         }
     }

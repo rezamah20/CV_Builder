@@ -1,36 +1,48 @@
 package com.dampyocalculator.cvbuilder.template;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.ComponentActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dampyocalculator.cvbuilder.CreateCvActivity;
 import com.dampyocalculator.cvbuilder.R;
 import com.dampyocalculator.cvbuilder.adapter.TmpAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
+import com.dampyocalculator.cvbuilder.detail_user.EditPendidikanActivity;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGeneratorListener;
 import com.gkemon.XMLtoPDF.model.FailureResponse;
 import com.gkemon.XMLtoPDF.model.SuccessResponse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TemplateFrag extends Fragment {
     private View finalInvoiceViewToPrint;
 
-    TextView tv_nametmp, tv_posisitmp;
+    TextView tv_nametmp, tv_posisitmp, no_hp, email, address;
     Button generate;
     private ArrayList<usermodels> list = new ArrayList<>();
     private DatabaseHandler databaseHandler;
@@ -40,32 +52,72 @@ public class TemplateFrag extends Fragment {
     RecyclerView rv_frag_exp_list;
     private TmpAdapter adapter;
 
+    String id;
+    TextView tvskill;
+    String cek_array, image;
+    private ImageView imageView;
+
 
 
     public TemplateFrag(ComponentActivity activity, Context context) {
         this.context = context;
         this.activity = activity;
-
     }
 
     private View createInvoiceViewFromRootView(View root) {
         finalInvoiceViewToPrint = root.findViewById(R.id.invoice_layout);
         tv_nametmp = (TextView) root.findViewById(R.id.tv_item_nama_tmp);
         tv_posisitmp = (TextView) root.findViewById(R.id.tv_item_posisi_tmp);
+        no_hp = (TextView) root.findViewById(R.id.tmp_tv_nohp);
+        email = (TextView) root.findViewById(R.id.tmp_tv_email);
+        address = (TextView) root.findViewById(R.id.tmp_tv_alamat);
+
+
+        imageView = (ImageView) root.findViewById(R.id.tmp1_imgview);
         rv_frag_exp_list = root.findViewById(R.id.rview_template);
+
+        id = CreateCvActivity.getMyData();
+
+        databaseHandler =new DatabaseHandler(context);
+        adapter = new TmpAdapter(activity, context);
+        databaseHandler.getReadableDatabase();
+
+        id = CreateCvActivity.getMyData();
+        list.clear();
+        list = databaseHandler.getDataUser(id);
+        adapter.setListUser(list);
+
+        databaseHandler =new DatabaseHandler(context);
+
+        id = CreateCvActivity.getMyData();
+
+        rv_frag_exp_list.setHasFixedSize(true);
+
+        tv_nametmp.setText(list.get(0).getNama());
+        tv_posisitmp.setText(list.get(0).getPosisi());
+        no_hp.setText(list.get(0).getNotlpn());
+        email.setText(list.get(0).getEmail());
+        address.setText(list.get(0).getAlamat());
+
+
+        image = list.get(0).getImage();
+        imageView.setImageURI(Uri.parse(image));
+
+
+
+        RecyclerView.LayoutManager layoutManager
+                = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+       //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        rv_frag_exp_list.setLayoutManager(new GridLayoutManager(context, 2));
+        //rv_frag_exp_list.addItemDecoration(new GridSpacingItemDecoration(3, 0, false));
+        rv_frag_exp_list.setAdapter(adapter);
+
 
 
         xmlToPDFLifecycleObserver = new PdfGenerator.XmlToPDFLifecycleObserver((ComponentActivity) activity);
         getLifecycle().addObserver(xmlToPDFLifecycleObserver);
 
-        databaseHandler =new DatabaseHandler(context);
-        adapter = new TmpAdapter(activity, context);
-        databaseHandler.getReadableDatabase();
-        list = databaseHandler.getAll();
-        adapter.setListUser(list);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        rv_frag_exp_list.setLayoutManager(layoutManager);
-        rv_frag_exp_list.setAdapter(adapter);
+
 
 
 

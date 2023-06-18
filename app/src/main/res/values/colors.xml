@@ -148,4 +148,7 @@
     <color name="dark_blue">#00008B</color>
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
+
+    <color name="blue_grey">#607d8b</color>
+    <color name="emphasis">#31b6e7</color>
 </resources>

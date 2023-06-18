@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/light/test/app/src/main/res/drawable/background1_cardview.xml" value="0.1565" />
         <entry key="..\:/light/test/app/src/main/res/drawable/blue_outline.xml" value="0.13" />
         <entry key="..\:/light/test/app/src/main/res/drawable/button_round.xml" value="0.1565" />
         <entry key="..\:/light/test/app/src/main/res/drawable/green_outline.xml" value="0.1565" />
+        <entry key="..\:/light/test/app/src/main/res/drawable/line_text.xml" value="0.1565" />
         <entry key="..\:/light/test/app/src/main/res/drawable/spiner_bg.xml" value="0.1565" />
+        <entry key="..\:/light/test/app/src/main/res/drawable/textview_border.xml" value="0.1565" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_create_cv.xml" value="0.17249240121580547" />
-        <entry key="..\:/light/test/app/src/main/res/layout/activity_data_user.xml" value="0.17249240121580547" />
+        <entry key="..\:/light/test/app/src/main/res/layout/activity_data_user.xml" value="0.1" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_bahasa.xml" value="0.17249240121580547" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_kontak.xml" value="0.12083333333333333" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_pekerjaan.xml" value="0.17249240121580547" />
@@ -24,15 +27,16 @@
         <entry key="..\:/light/test/app/src/main/res/layout/frag_pendidikan.xml" value="0.25" />
         <entry key="..\:/light/test/app/src/main/res/layout/fragment_demo_invoice.xml" value="0.1" />
         <entry key="..\:/light/test/app/src/main/res/layout/fragskill.xml" value="0.25" />
-        <entry key="..\:/light/test/app/src/main/res/layout/invoice_layout.xml" value="0.11979166666666667" />
+        <entry key="..\:/light/test/app/src/main/res/layout/invoice_layout.xml" value="0.33" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_bahasa.xml" value="0.17552083333333332" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_pendidikan.xml" value="0.16530797101449277" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_pengalaman.xml" value="0.21" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_skill.xml" value="0.25" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_user.xml" value="0.25" />
         <entry key="..\:/light/test/app/src/main/res/layout/layout_print_horizontal_scroll.xml" value="0.18478260869565216" />
+        <entry key="..\:/light/test/app/src/main/res/layout/list_profil.xml" value="0.18478260869565216" />
         <entry key="..\:/light/test/app/src/main/res/layout/mytextview.xml" value="0.17198581560283688" />
-        <entry key="..\:/light/test/app/src/main/res/layout/tmp1.xml" value="0.3536458333333333" />
+        <entry key="..\:/light/test/app/src/main/res/layout/tmp1.xml" value="0.67" />
       </map>
     </option>
   </component>

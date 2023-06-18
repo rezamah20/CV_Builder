@@ -16,12 +16,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.dampyocalculator.cvbuilder.adapter.TmpAdapter;
 import com.dampyocalculator.cvbuilder.adapter.UserAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
-import com.dampyocalculator.cvbuilder.template.TemplateActivity;
+import com.dampyocalculator.cvbuilder.database.usrmodelskill;
 import com.dampyocalculator.cvbuilder.template.TemplateFrag;
 
 import java.util.ArrayList;
@@ -32,13 +32,16 @@ public class CreateCvActivity extends AppCompatActivity {
     Spinner choose_profil;
     private Button test_nama;
     private ArrayList<usermodels> list = new ArrayList<>();
+
+
     private UserAdapter userAdapter;
+    private TmpAdapter tmpadapter;
     private DatabaseHandler databaseHandler;
     private List<String> id_user;
     private List<String> nama_user;
     private List<String> jabatan;
 
-    private String id, nama;
+    static String id, nama;
 
     //template cv
     private List<String> listtemplate;
@@ -62,8 +65,10 @@ public class CreateCvActivity extends AppCompatActivity {
 
         test_nama = (Button) findViewById(R.id.test_nama);
         userAdapter = new UserAdapter(this, this);
+        tmpadapter = new TmpAdapter(this, this);
         databaseHandler = new DatabaseHandler(this);
         list.clear();
+        userAdapter.setListUser(list);
         list = databaseHandler.getAll();
 
         demoInvoiceFragment = new TemplateFrag(this, this);
@@ -83,12 +88,17 @@ public class CreateCvActivity extends AppCompatActivity {
                // Toast.makeText(CreateCvActivity.this, "ID Dipilih " +id+ ", ID Template " +id_temp_txt, Toast.LENGTH_SHORT).show();
                 if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
                     getSupportFragmentManager().beginTransaction()
+
                             .add(android.R.id.content, demoInvoiceFragment)
                             .commit();
                 }
 
             }
         });
+    }
+
+    public static String getMyData() {
+        return id;
     }
 
     private void getData(){

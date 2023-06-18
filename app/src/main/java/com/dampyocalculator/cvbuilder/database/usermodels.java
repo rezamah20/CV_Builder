@@ -1,11 +1,19 @@
 package com.dampyocalculator.cvbuilder.database;
 
 public class usermodels {
+
+    String id_usr_tmp;
+
     String id;
     String nama;
     String posisi;
     String profil;
     String image;
+
+    String primarykeycontact;
+    String notlpn;
+    String email;
+    String alamat;
 
     String primarykeypendidikanar;
     String namasekolah;
@@ -38,6 +46,15 @@ public class usermodels {
     //}
 
     // setter and getter
+
+
+    public String getId_usr_tmp() {
+        return id_usr_tmp;
+    }
+
+    public void setId_usr_tmp(String id_usr_tmp) {
+        this.id_usr_tmp = id_usr_tmp;
+    }
 
     public String getId(){
         return id;
@@ -77,6 +94,38 @@ public class usermodels {
 
     public void setImage(String image){
         this.image = image;
+    }
+
+    public String getPrimarykeycontact() {
+        return primarykeycontact;
+    }
+
+    public void setPrimarykeycontact(String primarykeycontact) {
+        this.primarykeycontact = primarykeycontact;
+    }
+
+    public String getNotlpn() {
+        return notlpn;
+    }
+
+    public void setNotlpn(String notlpn) {
+        this.notlpn = notlpn;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
     public String getPrimarykeypendidikanar() {

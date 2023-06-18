@@ -147,7 +147,7 @@ public class EditBahasaActivity extends AppCompatActivity {
 
     }
 
-    private ArrayList<usermodels> getData(){
+    public ArrayList<usermodels> getData(){
         ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
         SQLiteDatabase ReadData = db.getReadableDatabase();
 
