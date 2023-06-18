@@ -1,12 +1,16 @@
 package com.dampyocalculator.cvbuilder.template;
 
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
+import android.graphics.text.LineBreaker;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dampyocalculator.cvbuilder.CreateCvActivity;
 import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.adapter.Tmp1PenAdapter;
 import com.dampyocalculator.cvbuilder.adapter.TmpAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
@@ -42,15 +47,16 @@ import java.util.List;
 public class TemplateFrag extends Fragment {
     private View finalInvoiceViewToPrint;
 
-    TextView tv_nametmp, tv_posisitmp, no_hp, email, address;
+    TextView tv_nametmp, tv_posisitmp, no_hp, email, address, profil;
     Button generate;
     private ArrayList<usermodels> list = new ArrayList<>();
     private DatabaseHandler databaseHandler;
     Context context;
     ComponentActivity activity;
     private PdfGenerator.XmlToPDFLifecycleObserver xmlToPDFLifecycleObserver;
-    RecyclerView rv_frag_exp_list;
+    RecyclerView rv_frag_exp_list, tmp1_rv_frag_pend_list;
     private TmpAdapter adapter;
+    private Tmp1PenAdapter tmp1penAdapter;
 
     String id;
     TextView tvskill;
@@ -68,49 +74,59 @@ public class TemplateFrag extends Fragment {
         finalInvoiceViewToPrint = root.findViewById(R.id.invoice_layout);
         tv_nametmp = (TextView) root.findViewById(R.id.tv_item_nama_tmp);
         tv_posisitmp = (TextView) root.findViewById(R.id.tv_item_posisi_tmp);
+
         no_hp = (TextView) root.findViewById(R.id.tmp_tv_nohp);
         email = (TextView) root.findViewById(R.id.tmp_tv_email);
         address = (TextView) root.findViewById(R.id.tmp_tv_alamat);
+        profil = (TextView) root.findViewById(R.id.tv_profil_tmp);
 
 
         imageView = (ImageView) root.findViewById(R.id.tmp1_imgview);
         rv_frag_exp_list = root.findViewById(R.id.rview_template);
+        tmp1_rv_frag_pend_list = root.findViewById(R.id.tmp1_rview_pendidikan);
 
         id = CreateCvActivity.getMyData();
 
+        //user dan pendidikan
         databaseHandler =new DatabaseHandler(context);
         adapter = new TmpAdapter(activity, context);
         databaseHandler.getReadableDatabase();
-
         id = CreateCvActivity.getMyData();
         list.clear();
         list = databaseHandler.getDataUser(id);
         adapter.setListUser(list);
-
-        databaseHandler =new DatabaseHandler(context);
-
-        id = CreateCvActivity.getMyData();
-
-        rv_frag_exp_list.setHasFixedSize(true);
-
+        image = list.get(0).getImage();
+        imageView.setImageURI(Uri.parse(image));
         tv_nametmp.setText(list.get(0).getNama());
         tv_posisitmp.setText(list.get(0).getPosisi());
         no_hp.setText(list.get(0).getNotlpn());
         email.setText(list.get(0).getEmail());
         address.setText(list.get(0).getAlamat());
-
-
-        image = list.get(0).getImage();
-        imageView.setImageURI(Uri.parse(image));
-
-
-
-        RecyclerView.LayoutManager layoutManager
-                = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-       //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        profil.setText(list.get(0).getProfil());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            profil.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+        }
         rv_frag_exp_list.setLayoutManager(new GridLayoutManager(context, 2));
-        //rv_frag_exp_list.addItemDecoration(new GridSpacingItemDecoration(3, 0, false));
+        rv_frag_exp_list.setHasFixedSize(true);
+        rv_frag_exp_list.addItemDecoration(new GridSpacingItemDecoration(3, 0, false));
         rv_frag_exp_list.setAdapter(adapter);
+
+
+        //pendidikan
+        tmp1penAdapter = new Tmp1PenAdapter(activity, context);
+        list.clear();
+        list = databaseHandler.getDataPend(id);
+        tmp1penAdapter.setListUser(list);
+        databaseHandler =new DatabaseHandler(context);
+        id = CreateCvActivity.getMyData();
+        tmp1_rv_frag_pend_list.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManagerpen = new LinearLayoutManager(context);
+        tmp1_rv_frag_pend_list.setLayoutManager(layoutManagerpen);
+        tmp1_rv_frag_pend_list.setAdapter(tmp1penAdapter);
+
+       // RecyclerView.LayoutManager layoutManager
+        //        = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+
 
 
 

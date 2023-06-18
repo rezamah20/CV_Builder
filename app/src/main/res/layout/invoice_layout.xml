@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/white"
     android:orientation="horizontal"
     android:gravity="center"
     >
@@ -14,8 +14,8 @@
         android:layout_width="1100px"
         android:layout_height="1556px"
         android:layout_above="@+id/generate_invoice_btn"
-        android:orientation="vertical"
-        >
+        android:background="@drawable/tmp1_bg"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -33,8 +33,8 @@
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
-                    android:layout_marginBottom="0dp"
                     android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
                     android:fontFamily="@font/robotoregular"
                     android:gravity="start"
                     android:text="INI NAMA TEST"
@@ -163,61 +163,131 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
-            android:paddingLeft="25dp">
+            android:paddingLeft="25dp"
+            android:paddingTop="20dp">
 
-            <TextView
-                android:layout_width="204dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="Profil"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="199dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="153dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="PROFIL"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="175dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/black" />
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <TextView
-                android:layout_width="153dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="SKILL"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                />
-            <View
-                android:layout_width="150dp"
-                android:layout_height="1dp"
-                android:layout_gravity="bottom"
-                android:background="@color/black"/>
+
+                <TextView
+                    android:layout_width="153dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="SKILL"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/black" />
             </LinearLayout>
 
 
         </LinearLayout>
+
         <LinearLayout
-            android:id="@+id/skill"
             android:layout_width="1000px"
-            android:layout_height="1414.4px"
-            android:layout_above="@+id/generate_invoice_btn"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:paddingLeft="25dp"
             android:paddingTop="4dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rview_Pendidikan"
-                android:layout_width="229dp"
-                android:layout_height="440dp"
-                android:paddingLeft="25dp"
-                tools:ignore="MissingConstraints" />
+            <LinearLayout
+                android:layout_width="199dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rview_template"
-                android:layout_width="157dp"
-                android:layout_height="wrap_content"
-                tools:ignore="MissingConstraints" />
+                <TextView
+                    android:id="@+id/tv_profil_tmp"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:justificationMode="inter_word"
+                    android:text="PROFIL"
+                    android:textColor="@color/black"
+                    android:textSize="8sp" />
 
+                <LinearLayout
+                    android:layout_width="1000px"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="4dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tmp1_rview_pengalaman"
+                        android:layout_width="170dp"
+                        android:layout_height="340dp"
+                        android:paddingLeft="0dp"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="199dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rview_template"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints" />
+
+                <TextView
+                    android:layout_width="153dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="PENDIDIKAN"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:paddingTop="4dp"
+                    />
+
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tmp1_rview_pendidikan"
+                    android:layout_width="154dp"
+                    android:layout_height="wrap_content"
+                    tools:ignore="MissingConstraints" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
 
     </LinearLayout>
 
@@ -229,6 +299,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="Generate Invoice" />
+        android:text="Generate Resume" />
 
 </RelativeLayout>

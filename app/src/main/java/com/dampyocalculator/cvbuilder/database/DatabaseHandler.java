@@ -150,9 +150,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
         SQLiteDatabase ReadData = this.getReadableDatabase();
 
-        Cursor c =ReadData.rawQuery("SELECT tb_user.id, tb_user.nama, tb_user.posisi, tb_user.profil, tb_user.image, tb_skill.id_skill, tb_skill.nama_skill, tb_contact.no_tlpn, tb_contact.email, tb_contact.alamat FROM tb_user " +
+        Cursor c =ReadData.rawQuery("SELECT tb_user.id, tb_user.nama, tb_user.posisi, tb_user.profil, tb_user.image, " +
+                "tb_skill.id_skill, tb_skill.nama_skill, tb_contact.no_tlpn, tb_contact.email, tb_contact.alamat " +
+                "FROM tb_user " +
                 "LEFT JOIN tb_skill on tb_user.id = tb_skill.id " +
-                "LEFT JOIN tb_contact on tb_user.id = tb_contact.id WHERE tb_user.id = "+id, null);
+                "LEFT JOIN tb_contact on tb_user.id = tb_contact.id " +
+                "WHERE tb_user.id = "+id, null);
         if (c.moveToFirst()) {
             do {
 
@@ -172,7 +175,36 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return usermodelsArrayList;
     }
+    public ArrayList<usermodels> getDataPend(String id){
+        ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
+        SQLiteDatabase ReadData = this.getReadableDatabase();
 
+        Cursor c = ReadData.rawQuery("SELECT "+DatabaseHandler.primarykey_id_pendidikan+", "
+                + DatabaseHandler.table_pendidikan+"."+DatabaseHandler.key_id_pendidikan+", "
+                + DatabaseHandler.key_nama_sekolah+", "
+                + DatabaseHandler.key_nama_jurusan+", "
+                + DatabaseHandler.key_tahun_masuk+", "
+                + DatabaseHandler.key_tahun_lulus+", "
+                + DatabaseHandler.key_keterangan_pendidikan+
+                " FROM " + DatabaseHandler.table_user+
+                " INNER JOIN " + DatabaseHandler.table_pendidikan+ " on " + DatabaseHandler.table_pendidikan +"."+DatabaseHandler.key_id+ " = " + DatabaseHandler.table_user+"."+DatabaseHandler.key_id+
+                " WHERE " +DatabaseHandler.table_user+"."+DatabaseHandler.key_id+ " = " +id, null);
+
+        if (c.moveToFirst()) {
+            do {
+                usermodels usermodels = new usermodels();
+                usermodels.setPrimarykeypendidikanar(c.getString(0));
+                usermodels.setId(c.getString(1));
+                usermodels.setNamasekolah(c.getString(2));
+                usermodels.setNamajurusan(c.getString(3));
+                usermodels.setTahunmasuk(c.getString(4));
+                usermodels.setTahunlulus(c.getString(5));
+                usermodels.setKeteranganpendidikan(c.getString(6));
+                usermodelsArrayList.add(usermodels);
+            } while (c.moveToNext());
+        }
+        return usermodelsArrayList;
+    }
 
 
 
