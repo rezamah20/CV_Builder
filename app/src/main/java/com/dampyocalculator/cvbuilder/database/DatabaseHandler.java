@@ -238,7 +238,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return usermodelsArrayList;
     }
+    public ArrayList<usermodels> getDataBahasa(String id){
+        ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
+        SQLiteDatabase ReadData = this.getReadableDatabase();
 
+        Cursor c = ReadData.rawQuery("SELECT "+DatabaseHandler.primarykey_bahasa+", "
+                + DatabaseHandler.table_bahasa+"."+DatabaseHandler.key_id_bahasa+", "
+                + DatabaseHandler.nama_bahasa+", "
+                + DatabaseHandler.level_bahasa+
+                " FROM " + DatabaseHandler.table_user+
+                " INNER JOIN " + DatabaseHandler.table_bahasa+ " on " + DatabaseHandler.table_bahasa +"."+DatabaseHandler.key_id+ " = " + DatabaseHandler.table_user+"."+DatabaseHandler.key_id+
+                " WHERE " +DatabaseHandler.table_user+"."+DatabaseHandler.key_id+ " = " +id, null);
+
+        if (c.moveToFirst()){
+            do {
+                usermodels usermodels = new usermodels();
+                usermodels.setPrimarykeybahasa(c.getString(0));
+                usermodels.setId(c.getString(1));
+                usermodels.setNama_bahasa(c.getString(2));
+                usermodels.setLevel_bahasa(c.getString(3));
+                usermodelsArrayList.add(usermodels);
+
+            }while (c.moveToNext());
+        }
+        return usermodelsArrayList;
+    }
 
     public void insert(String name, String posisi, String profil, String image){
         SQLiteDatabase database = this.getWritableDatabase();

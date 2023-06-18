@@ -30,6 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dampyocalculator.cvbuilder.CreateCvActivity;
 import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.adapter.Tmp1BahasaAdapter;
 import com.dampyocalculator.cvbuilder.adapter.Tmp1PenAdapter;
 import com.dampyocalculator.cvbuilder.adapter.Tmp1PengAdapter;
 import com.dampyocalculator.cvbuilder.adapter.TmpAdapter;
@@ -55,10 +56,11 @@ public class TemplateFrag extends Fragment {
     Context context;
     ComponentActivity activity;
     private PdfGenerator.XmlToPDFLifecycleObserver xmlToPDFLifecycleObserver;
-    RecyclerView rv_frag_exp_list, tmp1_rv_frag_pend_list, tmp1_rv_frag_peng_list;
+    RecyclerView rv_frag_exp_list, tmp1_rv_frag_pend_list, tmp1_rv_frag_peng_list, tmp1_rv_frag_bahasa_list;
     private TmpAdapter adapter;
     private Tmp1PenAdapter tmp1penAdapter;
     private Tmp1PengAdapter tmp1pengAdapter;
+    private Tmp1BahasaAdapter tmp1BahasaAdapter;
 
     String id;
     TextView tvskill;
@@ -87,6 +89,7 @@ public class TemplateFrag extends Fragment {
         rv_frag_exp_list = root.findViewById(R.id.rview_template);
         tmp1_rv_frag_pend_list = root.findViewById(R.id.tmp1_rview_pendidikan);
         tmp1_rv_frag_peng_list = root.findViewById(R.id.tmp1_rview_pengalaman);
+        tmp1_rv_frag_bahasa_list = root.findViewById(R.id.tmp1_rview_bahasa);
 
 
         id = CreateCvActivity.getMyData();
@@ -139,6 +142,19 @@ public class TemplateFrag extends Fragment {
         RecyclerView.LayoutManager layoutManagerpeng = new LinearLayoutManager(context);
         tmp1_rv_frag_peng_list.setLayoutManager(layoutManagerpeng);
         tmp1_rv_frag_peng_list.setAdapter(tmp1pengAdapter);
+
+
+        //bahasa
+        tmp1BahasaAdapter = new Tmp1BahasaAdapter(activity, context);
+        list.clear();
+        list = databaseHandler.getDataBahasa(id);
+        tmp1BahasaAdapter.setListUser(list);
+        databaseHandler = new DatabaseHandler(context);
+        id = CreateCvActivity.getMyData();
+        tmp1_rv_frag_bahasa_list.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManagerbahasa = new LinearLayoutManager(context);
+        tmp1_rv_frag_bahasa_list.setLayoutManager(layoutManagerbahasa);
+        tmp1_rv_frag_bahasa_list.setAdapter(tmp1BahasaAdapter);
 
         xmlToPDFLifecycleObserver = new PdfGenerator.XmlToPDFLifecycleObserver((ComponentActivity) activity);
         getLifecycle().addObserver(xmlToPDFLifecycleObserver);

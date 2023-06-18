@@ -239,31 +239,33 @@
                     android:orientation="horizontal"
                     android:paddingLeft="0dp"
                     android:paddingTop="4dp">
+
                     <LinearLayout
                         android:layout_width="199dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
-                    <TextView
-                        android:layout_width="153dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
-                        android:text="PENGALAMAN"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
 
-                    <View
-                        android:layout_width="175dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="bottom"
-                        android:background="@color/black" />
+                        <TextView
+                            android:layout_width="153dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="PENGALAMAN"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/tmp1_rview_pengalaman"
-                        android:layout_width="170dp"
-                        android:layout_height="340dp"
-                        android:paddingLeft="0dp"
-                        tools:ignore="MissingConstraints" />
+                        <View
+                            android:layout_width="175dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="bottom"
+                            android:background="@color/black" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/tmp1_rview_pengalaman"
+                            android:layout_width="170dp"
+                            android:layout_height="340dp"
+                            android:paddingLeft="0dp"
+                            tools:ignore="MissingConstraints" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -284,12 +286,11 @@
                     android:layout_width="153dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
+                    android:paddingTop="4dp"
                     android:text="PENDIDIKAN"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:paddingTop="4dp"
-                    />
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="150dp"
@@ -302,6 +303,36 @@
                     android:layout_width="154dp"
                     android:layout_height="wrap_content"
                     tools:ignore="MissingConstraints" />
+
+
+                <LinearLayout
+                    android:layout_width="199dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingBottom="30dp">
+
+                    <TextView
+                        android:layout_width="153dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:paddingTop="4dp"
+                        android:text="BAHASA"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="150dp"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="@color/black" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tmp1_rview_bahasa"
+                        android:layout_width="154dp"
+                        android:layout_height="wrap_content"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
 
             </LinearLayout>
 
