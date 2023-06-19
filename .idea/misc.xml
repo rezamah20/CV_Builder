@@ -14,25 +14,25 @@
         <entry key="..\:/light/test/app/src/main/res/drawable/tmp1_pendidikan.xml" value="0.1565" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_about_you.xml" value="0.40705128205128205" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_create_cv.xml" value="0.25" />
-        <entry key="..\:/light/test/app/src/main/res/layout/activity_data_user.xml" value="0.1" />
-        <entry key="..\:/light/test/app/src/main/res/layout/activity_edit.xml" value="0.21" />
+        <entry key="..\:/light/test/app/src/main/res/layout/activity_data_user.xml" value="0.18" />
+        <entry key="..\:/light/test/app/src/main/res/layout/activity_edit.xml" value="0.25" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_bahasa.xml" value="0.17249240121580547" />
-        <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_kontak.xml" value="0.12083333333333333" />
+        <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_kontak.xml" value="0.33" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_pekerjaan.xml" value="0.17249240121580547" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_pendidikan.xml" value="0.16530797101449277" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_edit_skill.xml" value="0.16530797101449277" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_list_profil.xml" value="0.12083333333333333" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_list_user.xml" value="0.21" />
-        <entry key="..\:/light/test/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/light/test/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_template.xml" value="0.17249240121580547" />
         <entry key="..\:/light/test/app/src/main/res/layout/activity_testhtml.xml" value="0.12083333333333333" />
         <entry key="..\:/light/test/app/src/main/res/layout/frag_bahasa.xml" value="0.33" />
-        <entry key="..\:/light/test/app/src/main/res/layout/frag_pekerjaan.xml" value="0.25" />
+        <entry key="..\:/light/test/app/src/main/res/layout/frag_pekerjaan.xml" value="0.22" />
         <entry key="..\:/light/test/app/src/main/res/layout/frag_pendidikan.xml" value="0.25" />
         <entry key="..\:/light/test/app/src/main/res/layout/fragment_demo_invoice.xml" value="0.1" />
         <entry key="..\:/light/test/app/src/main/res/layout/fragskill.xml" value="0.22" />
         <entry key="..\:/light/test/app/src/main/res/layout/invoice_layout.xml" value="0.22" />
-        <entry key="..\:/light/test/app/src/main/res/layout/item_bahasa.xml" value="0.17552083333333332" />
+        <entry key="..\:/light/test/app/src/main/res/layout/item_bahasa.xml" value="0.25" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_pendidikan.xml" value="0.2" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_pengalaman.xml" value="0.21" />
         <entry key="..\:/light/test/app/src/main/res/layout/item_skill.xml" value="0.18" />

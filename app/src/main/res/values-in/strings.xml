@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Pembuat CV</string>
+    <string name="action_settings">Pengaturan</string>
+    <string name="create_cv">Buat CV</string>
+    <string name="profile">Profil</string>
+    <string name="add_profile">Tambah Profil</string>
+    <string name="edit">Ubah</string>
+    <string name="delete">Hapus</string>
+    <string name="save">Simpan</string>
+
+    <string name="edit_profil">Ubah Profil</string>
+    <string name="edit_contact">Edit Kontak</string>
+    <string name="edit_education">Edit Pendidikan</string>
+    <string name="edit_skill">Edit Keahlian</string>
+    <string name="edit_language">Edit Bahasa</string>
+    <string name="edit_experience">Edit Pengalaman</string>
+
+    <string name="choose_photo">+       Pilih Foto</string>
+    <string name="name">Nama</string>
+    <string name="put_name">Isikan Nama Anda</string>
+    <string name="position">Position</string>
+    <string name="put_positon">Isikan Posisi Anda</string>
+    <string name="about_you">Tentang Anda</string>
+    <string name="put_about_you">Ceritakan Tentang Anda</string>
+
+    <string name="phone_number">No Telpon</string>
+    <string name="put_phone_number">Masukan Nomor Telpon Anda</string>
+    <string name="email">Email</string>
+    <string name="put_email">Masukan Email Anda</string>
+    <string name="address">Alamat</string>
+    <string name="put_address">Masukan Alamat Anda</string>
+
+    <string name="add_education">Tambah Pendidikan</string>
+    <string name="add_skill">Tambah Keahlian</string>
+    <string name="add_language">Tambah Bahasa</string>
+    <string name="add_experience">Tambah Pengalaman</string>
+
+    <string name="input_bahasa">Masukan Bahasa</string>
+    <string name="put_input_bahasa">Masukan Bahasa Andar</string>
+    <string name="choose_lvl_bahasa">Pilih Level Bahasa</string>
+
+    <string name="company_name">Nama Perusahaan</string>
+    <string name="put_company_name">Masukan Nama Perusahaan</string>
+    <string name="position_exp">Posisi</string>
+    <string name="put_position_exp">Masukan Posisi Anda Dalam Perusahaan</string>
+    <string name="start_working">Mulai Bekerja</string>
+    <string name="put_start_working">Masukan Bulan dan Tahun Mulai Bekerja</string>
+    <string name="end_working">Akhir Bekerja</string>
+    <string name="put_end_working">Masukan Bulan dan Tahun Akhir Bekerja</string>
+    <string name="work_explanation">Deskripsi Pekerjaa</string>
+    <string name="put_work_explanation">Masukan Deskripsi Pekerjaan</string>
+
+    <string-array name="level_bahasa">
+        <item>Pemula</item>
+        <item>Menengah</item>
+        <item>Baik</item>
+        <item>Sangat Baik</item>
+        <item>Fasih</item>
+    </string-array>
+
+</resources>

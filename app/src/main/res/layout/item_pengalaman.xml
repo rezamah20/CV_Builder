@@ -96,7 +96,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_round_delete"
                     android:layout_marginTop="16dp"
-                    android:text="Delete" />
+                    android:text="@string/delete" />
             </LinearLayout>
 
         </LinearLayout>

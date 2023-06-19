@@ -24,7 +24,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_user"
-        android:text="+       Pilih Foto"
+        android:text="@string/choose_photo"
         android:textColor="@color/white"
         android:background="@drawable/button_round_delete"
         android:layout_margin="16dp"
@@ -48,7 +48,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         app:hintAnimationEnabled="true"
-        app:helperText="Isikan Nama Anda"
+        app:helperText="@string/put_name"
         app:layout_constraintTop_toBottomOf="@+id/add_image"
         >
 
@@ -56,8 +56,7 @@
             android:id="@+id/namaprofil_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:autofillHints=""
+            android:hint="@string/name"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,11 +68,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:hint="Posisi"
+        android:hint="@string/position"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
-        android:text="Jabatan"
+        android:text="@string/position"
         android:textAppearance="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeErrorColor="@color/black"
@@ -83,7 +82,7 @@
         app:hintTextColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/namaprofil"
         app:shapeAppearance="@style/CustomShapeOVerlay"
-        app:helperText="Masukan Jabatan Anda"
+        app:helperText="@string/put_positon"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -99,11 +98,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:hint="Profil Pribadi"
+        android:hint="@string/about_you"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
-        android:text="Profil Pribadi"
+        android:text="@string/about_you"
         android:textAppearance="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeErrorColor="@color/black"
@@ -113,7 +112,7 @@
         app:hintTextColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/posisiprofil"
         app:shapeAppearance="@style/CustomShapeOVerlay"
-        app:helperText="Ceritakan Tentang Anda"
+        app:helperText="@string/put_about_you"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -132,7 +131,7 @@
         android:layout_height="50dp"
         tools:ignore="HardcodedText,MissingConstraints"
         app:layout_constraintTop_toBottomOf="@id/dataprofil"
-        android:text="Simpan"
+        android:text="@string/save"
         android:textColor="@color/white"
         android:layout_margin="16dp"
         android:background="@drawable/shape_button"

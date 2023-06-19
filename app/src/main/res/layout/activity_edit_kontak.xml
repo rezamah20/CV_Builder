@@ -12,8 +12,8 @@
         android:id="@+id/phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="No Telp"
-        android:text="No Telp"
+        android:hint="@string/phone_number"
+        android:text="@string/phone_number"
         tools:ignore="MissingConstraints"
         app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/black"
@@ -27,7 +27,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         app:hintAnimationEnabled="true"
-        app:helperText="Isikan Nomor Handphone anda"
+        app:helperText="@string/put_phone_number"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -44,11 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:hint="Email"
+        android:hint="@string/email"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
-        android:text="Email"
+        android:text="@string/email"
         android:textAppearance="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeErrorColor="@color/black"
@@ -58,7 +58,7 @@
         app:hintTextColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/phone_number"
         app:shapeAppearance="@style/CustomShapeOVerlay"
-        app:helperText="Masukan Email Anda"
+        app:helperText="@string/put_email"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -74,11 +74,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="true"
-        android:hint="Alamat"
+        android:hint="@string/address"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
-        android:text="Alamat"
+        android:text="@string/address"
         android:textAppearance="@color/black"
         app:boxStrokeColor="@color/black"
         app:boxStrokeErrorColor="@color/black"
@@ -88,7 +88,7 @@
         app:hintTextColor="@color/black"
         app:layout_constraintTop_toBottomOf="@+id/email"
         app:shapeAppearance="@style/CustomShapeOVerlay"
-        app:helperText="Masukan Alamat Anda"
+        app:helperText="@string/put_address"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +106,7 @@
         android:layout_height="50dp"
         tools:ignore="HardcodedText,MissingConstraints"
         app:layout_constraintTop_toBottomOf="@id/address"
-        android:text="Simpan"
+        android:text="@string/save"
         android:textColor="@color/white"
         android:layout_margin="16dp"
         android:background="@drawable/shape_button"

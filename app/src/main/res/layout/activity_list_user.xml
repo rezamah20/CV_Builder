@@ -20,7 +20,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_round_add"
-            android:text="tambah profil"
+            android:text="@string/add_profile"
             android:textColor="@color/white"
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />

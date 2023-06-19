@@ -13,8 +13,8 @@
         android:id="@+id/isi_bahasa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukan Bahasa"
-        android:text="Masukan Bahasa"
+        android:hint="@string/input_bahasa"
+        android:text="@string/input_bahasa"
         tools:ignore="MissingConstraints"
         app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/black"
@@ -28,7 +28,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         app:hintAnimationEnabled="true"
-        app:helperText="Masukan Bahasa"
+        app:helperText="@string/put_input_bahasa"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -55,7 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="start"
-        android:text="Pilih Level Bahasa"
+        android:text="@string/choose_lvl_bahasa"
         android:textSize="11sp"
         android:paddingLeft="20dp"
         android:paddingTop="6dp"

@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.dampyocalculator.cvbuilder.template.Language_Manager;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGeneratorListener;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     TextView apptname;
     private PdfGenerator.XmlToPDFLifecycleObserver xmlToPDFLifecycleObserver;
     FrameLayout create_cv, profil;
+    Button en_lang, id_lang;
+    Language_Manager language_manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,26 @@ public class MainActivity extends AppCompatActivity {
         apptname = findViewById(R.id.txtapp);
         create_cv = findViewById(R.id.create_cv);
         profil = findViewById(R.id.profil_cv);
+        en_lang = findViewById(R.id.en_langue);
+        id_lang = findViewById(R.id.id_langue);
+
+        language_manager = new Language_Manager(this);
+        en_lang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                language_manager.updateResource("en");
+                recreate();
+            }
+        });
+        id_lang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                language_manager.updateResource("in");
+                recreate();
+            }
+        });
+
+
         apptname.setText("Welcome ");
 
 

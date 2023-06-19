@@ -20,10 +20,12 @@
         android:id="@+id/tambah_profil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="tambah profil"
-        android:textColor="@color/black"
         android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="tambah profil"
+        android:textColor="@color/black" />
 
 </RelativeLayout>
