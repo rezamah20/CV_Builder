@@ -109,6 +109,12 @@ public class DataUserActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(DataUserActivity.this, list_user.class);
+        startActivity(intent);
+    }
     private void getData(){
         SQLiteDatabase ReadData = db.getReadableDatabase();
         Cursor c =ReadData.rawQuery("SELECT * FROM " + DatabaseHandler.table_user+ " WHERE " +DatabaseHandler.key_id+ " = " +id, null);

@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp"
+            android:padding="10dp"
             android:background="@drawable/background1_cardview">
 
             <TextView
@@ -31,7 +31,8 @@
                 android:layout_marginBottom="4dp"
                 android:gravity="start"
                 android:text="Software Developer"
-                android:textSize="24sp"
+                android:paddingLeft="20dp"
+                android:textSize="20sp"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
             <LinearLayout
@@ -40,8 +41,8 @@
                 android:orientation="horizontal">
             <ImageButton
                 android:id="@+id/hapus_skill"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:background="@null"

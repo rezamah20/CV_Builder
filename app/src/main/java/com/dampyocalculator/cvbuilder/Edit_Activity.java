@@ -101,7 +101,7 @@ public class Edit_Activity extends AppCompatActivity {
             Toast.makeText(this, "Isikan Semua Data", Toast.LENGTH_SHORT).show();
         }else{
             db.insert(editnama.getText().toString(), editposisi.getText().toString(), editprofil.getText().toString(), img_uri.toString());
-            finish();
+            getLastData();
         }
     }
 
@@ -133,6 +133,19 @@ public class Edit_Activity extends AppCompatActivity {
             editposisi.setText(posisi);
             editprofil.setText(profil);
             imageView.setImageURI(Uri.parse(image));
+        }
+    }
+    private  void getLastData(){
+        SQLiteDatabase ReadData = db.getReadableDatabase();
+        Cursor c =ReadData.rawQuery("SELECT * FROM "
+                +DatabaseHandler.table_user+ " ORDER BY " +DatabaseHandler.key_id+ " DESC LIMIT 1 ", null);
+        c.moveToFirst();
+        if (c.moveToFirst()){
+            id = c.getString(0);
+
+            Intent intent = new Intent(Edit_Activity.this, DataUserActivity.class);
+            intent.putExtra("id", id);
+            Edit_Activity.this.startActivity(intent);
         }
     }
 

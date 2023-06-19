@@ -63,6 +63,11 @@ public class list_user extends AppCompatActivity {
         userAdapter.setListUser(list);
         userAdapter.notifyDataSetChanged();
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(list_user.this, MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

@@ -26,7 +26,6 @@ import com.gkemon.XMLtoPDF.model.SuccessResponse;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_create;
     String appname;
     TextView apptname;
     private PdfGenerator.XmlToPDFLifecycleObserver xmlToPDFLifecycleObserver;
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //findViewById(R.id.idbtngenerate);
-        btn_create = findViewById(R.id.idbtngenerate);
         appname = this.getString(R.string.app_name);
         apptname = findViewById(R.id.txtapp);
         create_cv = findViewById(R.id.create_cv);
@@ -54,31 +52,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CreateCvActivity.class);
                 MainActivity.this.startActivity(intent);
-            }
-        });
-
-
-        btn_create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PdfGenerator.getBuilder()
-                        .setContext(MainActivity.this)
-                        .fromLayoutXMLSource()
-                        .fromLayoutXML( R.layout.layout_print_horizontal_scroll)
-                        .setFileName("Demo-Text")
-                        .actionAfterPDFGeneration(PdfGenerator.ActionAfterPDFGeneration.SHARE)
-                        .savePDFSharedStorage(xmlToPDFLifecycleObserver)
-                        .build(new PdfGeneratorListener() {
-                            @Override
-                            public void onStartPDFGeneration() {
-
-                            }
-
-                            @Override
-                            public void onFinishPDFGeneration() {
-
-                            }
-                        });
             }
         });
 
