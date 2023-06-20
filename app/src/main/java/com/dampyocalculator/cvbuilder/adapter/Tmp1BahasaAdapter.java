@@ -48,7 +48,7 @@ public class Tmp1BahasaAdapter extends RecyclerView.Adapter<Tmp1BahasaAdapter.Tm
     @Override
     public void onBindViewHolder(@NonNull Tmp1BahasaViewHolder holder, int position) {
         holder.bahasa.setText(list.get(position).getNama_bahasa());
-        holder.bahasa.setText(list.get(position).getLevel_bahasa());
+        holder.lvl_bahasa.setText(list.get(position).getLevel_bahasa());
 
     }
 
@@ -63,7 +63,7 @@ public class Tmp1BahasaAdapter extends RecyclerView.Adapter<Tmp1BahasaAdapter.Tm
             super(itemView);
 
             bahasa = itemView.findViewById(R.id.tmp1_tv_item_bahasa);
-            lvl_bahasa = itemView.findViewById(R.id.level_bahasa);
+            lvl_bahasa = itemView.findViewById(R.id.tmp1_tv_item_levelbahasa);
         }
     }
 }

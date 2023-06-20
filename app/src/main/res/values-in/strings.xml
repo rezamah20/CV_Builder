@@ -50,6 +50,52 @@
     <string name="work_explanation">Deskripsi Pekerjaa</string>
     <string name="put_work_explanation">Masukan Deskripsi Pekerjaan</string>
 
+    <string name="school">Nama Sekolah/Universitas</string>
+    <string name="put_school">Masukan Nama Sekolah/Universitas</string>
+    <string name="majors">Jurusan</string>
+    <string name="put_majors">Masukan Jurusan</string>
+    <string name="start_school">Mulai Pendidikan</string>
+    <string name="put_start_school">Masukan Tahun Mulai Pendidikan</string>
+    <string name="grad_school">Lulus Pendidikan</string>
+    <string name="put_grad_school">Masukan Tahun Lulus Pendidikan</string>
+    <string name="explain_school">Penjelasan</string>
+    <string name="put_explain_school">Masukan Penjelasan, Contoh : Sertifikat, Nilai/IPK</string>
+
+    <string name="skill">Keahlian</string>
+    <string name="put_skill">Masukan Keahlian Anda</string>
+
+    <string name="delete_conf">Konfirmasi Hapus </string>
+    <string name="put_delete_conf">Apakah Anda Yakin Akan Menghapus ? </string>
+
+    <string name="yes">YA</string>
+    <string name="no">TIDAK</string>
+    <string name="dialog_succ_delete">Hapus berhasil!</string>
+
+    <string name="fill_coloms">Isikan Semua Data !!</string>
+
+    <string name="choose_profile">Pilih Profile</string>
+    <string name="choose_template">Pilih Template</string>
+
+    <string name="next">Lanjutkan</string>
+
+    <string name="tmp1_about_me">PROFIL</string>
+    <string name="tmp1_skill">KEAHLIAN</string>
+    <string name="tmp1_exp">PENGALAMAN</string>
+    <string name="tmp1_edu">PENDIDIKAN</string>
+    <string name="tmp1_lang">BAHASA</string>
+
+    <string name="generate_pdf">BUAT PDF</string>
+
+    <string name="change_lang">Ubah Bahasa</string>
+    <string name="choose_lang">Pilih Bahasa</string>
+    <string name="your_lang">Bahasa CV</string>
+
+
+    <string name="choose_lang_title">Ubah Bahasa</string>
+    <string name="choose_lang_message">Jika Anda Mengganti Bahasa, Maka CV Akan Menggunakan Bahasa Tersebut</string>
+
+
+
     <string-array name="level_bahasa">
         <item>Pemula</item>
         <item>Menengah</item>

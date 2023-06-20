@@ -98,7 +98,7 @@ public class Edit_Activity extends AppCompatActivity {
 
     private void save (){
         if (String.valueOf(editnama.getText()).equals("") || String.valueOf(editposisi.getText()).equals("")){
-            Toast.makeText(this, "Isikan Semua Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getString(R.string.fill_coloms), Toast.LENGTH_SHORT).show();
         }else{
             db.insert(editnama.getText().toString(), editposisi.getText().toString(), editprofil.getText().toString(), img_uri.toString());
             getLastData();
@@ -107,7 +107,7 @@ public class Edit_Activity extends AppCompatActivity {
 
     public void edit(){
         if (String.valueOf(editnama.getText()).equals("") || String.valueOf(editposisi.getText()).equals("")){
-            Toast.makeText(this, "Isikan Semua Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, this.getString(R.string.fill_coloms), Toast.LENGTH_SHORT).show();
         }else{
             Log.d("Tag update posisi", editposisi.getText().toString());
             db.update(Integer.parseInt(id), editnama.getText().toString(), editposisi.getText().toString(), editprofil.getText().toString(), img_uri.toString());

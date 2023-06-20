@@ -1,5 +1,6 @@
 package com.dampyocalculator.cvbuilder.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -54,7 +55,7 @@ public class PengalamanAdapter extends RecyclerView.Adapter<PengalamanAdapter.Pe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PengalamanViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PengalamanViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.nama_pengalaman.setText(list.get(position).getNama_pengalaman());
         holder.jabatan_pengalaman.setText(list.get(position).getJabaran_pengalaman());
         holder.tgl_masuk.setText(list.get(position).getTgl_masuk_peng());
@@ -68,23 +69,23 @@ public class PengalamanAdapter extends RecyclerView.Adapter<PengalamanAdapter.Pe
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-                builder.setTitle("konfirmasi hapus ?");
-                builder.setMessage("apakah Anda Yakin Ingin Menghapus ?");
-                builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+                builder.setTitle(context.getString(R.string.delete_conf)+" "+list.get(position).getNama_pengalaman());
+                builder.setMessage(context.getString(R.string.put_delete_conf));
+                builder.setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         databaseHandler = new DatabaseHandler(context);
                         SQLiteDatabase delete = databaseHandler.getWritableDatabase();
                         String query = "DELETE FROM " +DatabaseHandler.table_pengalaman+ " WHERE " +DatabaseHandler.primarykey_pengalaman+ " = " +holder.id_pengalaman;
                         delete.execSQL(query);
-                        Toast.makeText(activity, "Hapus berhasil!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, context.getString(R.string.dialog_succ_delete), Toast.LENGTH_SHORT).show();
                         Intent myIntent = new Intent(activity, EditPekerjaanActivity.class);
                         myIntent.putExtra("id", list.get(0).getId());
                         activity.startActivity(myIntent);
                         activity.finish();
                     }
                 });
-                builder.setNegativeButton("Tidak", null);
+                builder.setNegativeButton(context.getString(R.string.no), null);
                 AlertDialog alert = builder.create();
                 alert.show();
             }

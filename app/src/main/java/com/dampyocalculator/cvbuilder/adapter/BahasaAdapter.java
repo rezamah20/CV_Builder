@@ -1,10 +1,12 @@
 package com.dampyocalculator.cvbuilder.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +54,7 @@ public class BahasaAdapter extends RecyclerView.Adapter<BahasaAdapter.BahasaView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BahasaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BahasaViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tv_namabahasa.setText(list.get(position).getNama_bahasa());
         holder.tv_levelbahasa.setText(list.get(position).getLevel_bahasa());
         holder.id_bahasa = list.get(position).getPrimarykeybahasa();
@@ -63,24 +65,24 @@ public class BahasaAdapter extends RecyclerView.Adapter<BahasaAdapter.BahasaView
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-                builder.setTitle("konfirmasi hapus ?");
-                builder.setMessage("apakah Anda Yakin Ingin Menghapus ?");
+                builder.setTitle(context.getString(R.string.delete_conf)+" "+list.get(position).getNama_bahasa());
+                builder.setMessage(context.getString(R.string.put_delete_conf));
 
-                builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         databaseHandler = new DatabaseHandler(context);
                         SQLiteDatabase delete = databaseHandler.getWritableDatabase();
                         String query = "DELETE FROM " +DatabaseHandler.table_bahasa+ " WHERE " +DatabaseHandler.primarykey_bahasa+ " = " +holder.id_bahasa;
                         delete.execSQL(query);
-                        Toast.makeText(activity, "Hapus berhasil!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, context.getString(R.string.dialog_succ_delete), Toast.LENGTH_SHORT).show();
                         Intent myIntent = new Intent(activity, EditBahasaActivity.class);
                         myIntent.putExtra("id", list.get(0).getId());
                         activity.startActivity(myIntent);
                         activity.finish();
                     }
                 });
-                builder.setNegativeButton("Tidak", null);
+                builder.setNegativeButton(context.getString(R.string.no), null);
                 AlertDialog alert = builder.create();
                 alert.show();
             }

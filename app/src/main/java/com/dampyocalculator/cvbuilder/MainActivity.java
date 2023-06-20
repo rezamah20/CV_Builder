@@ -5,17 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuCompat;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dampyocalculator.cvbuilder.adapter.ChooseLangAdapter;
+import com.dampyocalculator.cvbuilder.detail_user.EditBahasaActivity;
 import com.dampyocalculator.cvbuilder.template.Language_Manager;
 import com.gkemon.XMLtoPDF.PdfGenerator;
 import com.gkemon.XMLtoPDF.PdfGenerator;
@@ -24,51 +35,82 @@ import com.gkemon.XMLtoPDF.Utils;
 import com.gkemon.XMLtoPDF.model.FailureResponse;
 import com.gkemon.XMLtoPDF.model.SuccessResponse;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    String appname;
-    TextView apptname;
+    String appname, choose_lang, cs_lang;
     private PdfGenerator.XmlToPDFLifecycleObserver xmlToPDFLifecycleObserver;
     FrameLayout create_cv, profil;
-    Button en_lang, id_lang;
     Language_Manager language_manager;
+    Activity activity = this;
+    String[] countryNames={"English", "Indonesia"};
+    int flags[] = {R.drawable.eng_lang, R.drawable.id_lang};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //findViewById(R.id.idbtngenerate);
         appname = this.getString(R.string.app_name);
-        apptname = findViewById(R.id.txtapp);
         create_cv = findViewById(R.id.create_cv);
         profil = findViewById(R.id.profil_cv);
-        en_lang = findViewById(R.id.en_langue);
-        id_lang = findViewById(R.id.id_langue);
+
+
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Locale current = getResources().getConfiguration().getLocales().get(0);
+            cs_lang = current.toString();
+        }else{
+            Locale current = getResources().getConfiguration().locale;
+            cs_lang = current.toString();
+        }
 
         language_manager = new Language_Manager(this);
-        en_lang.setOnClickListener(new View.OnClickListener() {
+
+        final List<String> lang = Arrays.asList("en", "id");
+        final Spinner spinner = findViewById(R.id.choose_lang);
+
+        ChooseLangAdapter customAdapter=new ChooseLangAdapter(getApplicationContext(),flags,countryNames);
+        spinner.setAdapter(customAdapter);
+        if (!Objects.equals(cs_lang, "in")){
+            spinner.setSelection(0);
+        }else {
+            spinner.setSelection(1);
+        }
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                language_manager.updateResource("en");
-                recreate();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 0:
+                         if (!Objects.equals(cs_lang, "en")){
+                             choose_lang = "en";
+                             language_manager.updateResource(choose_lang);
+                             recreate();
+                         }
+                        break;
+                         case 1:
+                            if (!Objects.equals(cs_lang, "in")){
+                                choose_lang = "in";
+                                language_manager.updateResource(choose_lang);
+                                recreate();
+                            }
+                             break;
+                }
             }
-        });
-        id_lang.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                language_manager.updateResource("in");
-                recreate();
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
 
-        apptname.setText("Welcome ");
 
 
         xmlToPDFLifecycleObserver = new PdfGenerator.XmlToPDFLifecycleObserver(this);
         getLifecycle().addObserver(xmlToPDFLifecycleObserver);
-
 
         create_cv.setOnClickListener(new View.OnClickListener() {
             @Override

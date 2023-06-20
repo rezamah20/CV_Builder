@@ -12,7 +12,8 @@
             android:layout_height="1556px"
             android:layout_above="@+id/generate_invoice_btn"
             android:background="@drawable/tmp1_bg"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="6dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -60,11 +61,12 @@
 
                         <ImageView
                             android:id="@+id/tmp_imgemail"
-                            android:layout_width="8dp"
-                            android:layout_height="8dp"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
                             android:layout_gravity="right"
+                            android:layout_marginTop="3dp"
                             android:layout_marginStart="25dp"
-                            android:layout_marginEnd="4dp"
+                            android:layout_marginEnd="7dp"
 
                             android:scaleType="fitXY"
                             android:src="@drawable/tmp1_hp_"
@@ -80,7 +82,7 @@
                             android:gravity="start"
                             android:text="089666002011"
                             android:textColor="@color/black"
-                            android:textSize="6sp" />
+                            android:textSize="8sp" />
 
                     </LinearLayout>
 
@@ -92,8 +94,8 @@
 
                         <ImageView
                             android:id="@+id/tmp1_imgnohp"
-                            android:layout_width="8dp"
-                            android:layout_height="8dp"
+                            android:layout_width="12dp"
+                            android:layout_height="13dp"
                             android:layout_marginStart="25dp"
                             android:layout_marginEnd="4dp"
 
@@ -111,18 +113,20 @@
                             android:gravity="start"
                             android:text="agusnihbossenggoldong@gmail.com"
                             android:textColor="@color/black"
-                            android:textSize="6sp" />
+                            android:textSize="8sp" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginTop="2dp"
+                        >
 
                         <ImageView
                             android:id="@+id/tmp1_alamat"
-                            android:layout_width="8dp"
-                            android:layout_height="8dp"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
                             android:layout_marginStart="25dp"
                             android:layout_marginEnd="4dp"
                             android:scaleType="fitXY"
@@ -139,7 +143,7 @@
                             android:gravity="start"
                             android:text="Jalan Jalan"
                             android:textColor="@color/black"
-                            android:textSize="6sp" />
+                            android:textSize="8sp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -172,7 +176,7 @@
                         android:layout_width="153dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
-                        android:text="PROFIL"
+                        android:text="@string/tmp1_about_me"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -193,13 +197,13 @@
                         android:layout_width="153dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
-                        android:text="SKILL"
+                        android:text="@string/tmp1_skill"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <View
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="1dp"
                         android:layout_gravity="bottom"
                         android:background="@color/black" />
@@ -213,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
-                android:paddingTop="4dp">
+                android:paddingTop="2dp">
 
                 <LinearLayout
                     android:layout_width="199dp"
@@ -235,7 +239,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:paddingLeft="0dp"
-                        android:paddingTop="4dp">
+                        android:paddingTop="6dp">
 
                         <LinearLayout
                             android:layout_width="199dp"
@@ -246,7 +250,7 @@
                                 android:layout_width="153dp"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="sans-serif"
-                                android:text="PENGALAMAN"
+                                android:text="@string/tmp1_exp"
                                 android:textColor="@color/black"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -261,7 +265,8 @@
                                 android:id="@+id/tmp1_rview_pengalaman"
                                 android:layout_width="170dp"
                                 android:layout_height="360dp"
-                                android:paddingLeft="0dp"
+                                android:paddingStart="0dp"
+                                android:paddingTop="3dp"
                                 tools:ignore="MissingConstraints" />
                         </LinearLayout>
                     </LinearLayout>
@@ -275,7 +280,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rview_template"
-                        android:layout_width="157dp"
+                        android:layout_width="161dp"
                         android:layout_height="wrap_content"
                         tools:ignore="MissingConstraints" />
 
@@ -283,21 +288,22 @@
                         android:layout_width="153dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
-                        android:paddingTop="4dp"
-                        android:text="PENDIDIKAN"
+                        android:paddingTop="6dp"
+                        android:text="@string/tmp1_edu"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <View
-                        android:layout_width="150dp"
+                        android:layout_width="160dp"
                         android:layout_height="1dp"
                         android:layout_gravity="bottom"
                         android:background="@color/black" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/tmp1_rview_pendidikan"
-                        android:layout_width="154dp"
+                        android:layout_width="161dp"
+                        android:paddingTop="3dp"
                         android:layout_height="wrap_content"
                         tools:ignore="MissingConstraints" />
 
@@ -313,20 +319,21 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
                             android:paddingTop="4dp"
-                            android:text="BAHASA"
+                            android:text="@string/tmp1_lang"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <View
-                            android:layout_width="150dp"
+                            android:layout_width="160dp"
                             android:layout_height="1dp"
                             android:layout_gravity="bottom"
                             android:background="@color/black" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/tmp1_rview_bahasa"
-                            android:layout_width="154dp"
+                            android:layout_width="157dp"
+                            android:paddingTop="6dp"
                             android:layout_height="wrap_content"
                             tools:ignore="MissingConstraints" />
                     </LinearLayout>
@@ -345,7 +352,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Buat PDF"
+            android:text="@string/generate_pdf"
             android:layout_gravity="center_horizontal|center"
             android:background="@drawable/button_round_delete"
             android:layout_marginBottom="40dp"

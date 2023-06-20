@@ -95,14 +95,14 @@ public class EditBahasaActivity extends AppCompatActivity {
         View view = inflater.inflate(R.layout.frag_bahasa, null);
 
         isi_bahasa_et = view.findViewById(R.id.isi_bahasa_et);
-        builder.setTitle("Tambah Bahasa");
+        builder.setTitle(this.getString(R.string.add_language));
         level_bahasa = view.findViewById(R.id.level_bahasa);
         ArrayAdapter<String> adapter_spiner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.level_bahasa));
         adapter_spiner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         level_bahasa.setAdapter(adapter_spiner);
         builder.setView(view);
 
-        builder.setPositiveButton("Simpan", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(this.getString(R.string.save), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (level_bahasa.getSelectedItem().toString().equalsIgnoreCase("Level Bahasa")){

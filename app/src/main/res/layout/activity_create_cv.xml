@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pilih Profil"
+        android:text="@string/choose_profile"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textStyle ="bold"
@@ -28,7 +28,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pilih Template"
+        android:text="@string/choose_template"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
         android:textStyle ="bold"
@@ -42,15 +42,23 @@
         android:layout_marginTop="0dp"
         android:background="@drawable/blue_outline"
         tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/test_nama"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lanjutkan"
-        android:textColor="@color/black"
-        tools:ignore="MissingConstraints"
-        android:layout_gravity="center_vertical|center_horizontal"
-        />
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+        <Button
+            android:id="@+id/test_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next"
+            android:textColor="@color/black"
+            tools:ignore="MissingConstraints"
+            android:background="@drawable/button_round_delete"
+            android:layout_gravity="center_vertical|center_horizontal"
+            />
+    </LinearLayout>
     <ImageView
         android:id="@+id/imgtemplate"
         android:layout_width="match_parent"

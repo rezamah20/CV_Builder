@@ -84,21 +84,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 Log.d("di klik", "delete");
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-                builder.setTitle("Konfirmasi Hapus");
-                builder.setMessage("Apakah Anda Yakin Akan Menghapus ?");
+                builder.setTitle(context.getString(R.string.delete_conf)+" "+list.get(position).getNama());
+                builder.setMessage(context.getString(R.string.put_delete_conf));
 
-                builder.setPositiveButton("YA", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         databaseHandler = new DatabaseHandler(context);
                         databaseHandler.delete(id);
-                        Toast.makeText(activity, "Hapus berhasil!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, context.getString(R.string.dialog_succ_delete), Toast.LENGTH_SHORT).show();
                         Intent myIntent = new Intent(activity, list_user.class);
                         activity.startActivity(myIntent);
                         activity.finish();
                     }
                 });
-                builder.setNegativeButton("Tidak", null);
+                builder.setNegativeButton(context.getString(R.string.no), null);
                 AlertDialog alert = builder.create();
                 alert.show();
             }

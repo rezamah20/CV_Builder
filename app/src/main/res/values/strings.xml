@@ -50,7 +50,48 @@
     <string name="work_explanation">Job Description</string>
     <string name="put_work_explanation">Enter Job Description</string>
 
+    <string name="school">School/University Name</string>
+    <string name="put_school">Enter School/University Name</string>
+    <string name="majors">Majors</string>
+    <string name="put_majors">Enter Your Majors</string>
+    <string name="start_school">Start Education</string>
+    <string name="put_start_school">Enter Year Start Education</string>
+    <string name="grad_school">Graduate</string>
+    <string name="put_grad_school">Enter Year Graduate</string>
+    <string name="explain_school">Explanation</string>
+    <string name="put_explain_school">Enter Explanation, Exp : Certificate or GPA</string>
 
+    <string name="skill">Skill</string>
+    <string name="put_skill">Enter Your Skill</string>
+
+    <string name="delete_conf">Confirm Delete</string>
+    <string name="put_delete_conf">Are You Sure Will Delete ?</string>
+    <string name="yes">YES</string>
+    <string name="no">no</string>
+    <string name="dialog_succ_delete">Delete Success</string>
+
+    <string name="fill_coloms">Fill All Columns !!</string>
+
+    <string name="choose_profile">Choose Profile</string>
+    <string name="choose_template">Choose Template</string>
+
+    <string name="next">Next</string>
+
+    <string name="tmp1_about_me">ABOUT ME</string>
+    <string name="tmp1_skill">SKILL</string>
+
+    <string name="tmp1_exp">EXPERIENCE</string>
+    <string name="tmp1_edu">EDUCATION</string>
+    <string name="tmp1_lang">LANGUAGE</string>
+
+    <string name="generate_pdf">GENERATE PDF</string>
+
+    <string name="change_lang">Change Language</string>
+    <string name="choose_lang">Choose Language</string>
+    <string name="your_lang">Resume Language</string>
+
+    <string name="choose_lang_title">Change Language</string>
+    <string name="choose_lang_message">If You Change Language, Resume Will Use Language Your Choice !!</string>
 
 
     <string-array name="level_bahasa">
