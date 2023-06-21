@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.detail_user.EditBahasaActivity;
 import com.dampyocalculator.cvbuilder.detail_user.EditKontakActivity;
@@ -31,6 +32,7 @@ public class DataUserActivity extends AppCompatActivity {
     private Button edit_profil, edit_kontak, edit_pendidikan, edit_skill, edit_bahasa ,edit_pengalaman;
     private DatabaseHandler db;
 
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class DataUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_user);
         db = new DatabaseHandler(this);
 
+        adsAdapter.loadbanner();
 
         imageView = (ImageView) findViewById(R.id.data_img_user);
         edit_profil = (Button) findViewById(R.id.edit_profil);

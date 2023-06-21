@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -36,6 +37,7 @@ public class Edit_Activity extends AppCompatActivity {
     private Uri img_uri;
     private ImageView imageView;
 
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
 
 
     @Override
@@ -43,6 +45,8 @@ public class Edit_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
         btn_simpan = findViewById(R.id.simpan);
+
+        adsAdapter.loadbanner();
 
         editnama = findViewById(R.id.namaprofil_et);
         editposisi = findViewById(R.id.posisiprofil_et);

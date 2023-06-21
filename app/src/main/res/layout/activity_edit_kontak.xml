@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".detail_user.EditKontakActivity">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/admob_smartbanner"
+        app:layout_constraintBottom_toTopOf="parent"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         style="?attr/textInputOutlinedDenseStyle"
@@ -28,6 +33,8 @@
         android:paddingRight="16dp"
         app:hintAnimationEnabled="true"
         app:helperText="@string/put_phone_number"
+        app:layout_constraintTop_toBottomOf="@+id/include"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText

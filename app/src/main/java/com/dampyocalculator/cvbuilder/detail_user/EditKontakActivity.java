@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -29,12 +30,15 @@ public class EditKontakActivity extends AppCompatActivity {
     private DatabaseHandler db;
     private Button simpan_kontak;
     private String id, no_tlpn, email, alamat, id_contact;
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_kontak);
         db = new DatabaseHandler(this);
+
+        adsAdapter.loadbanner();
 
         edit_notlp = findViewById(R.id.no_tlp_et);
         editemail = findViewById(R.id.email_et);

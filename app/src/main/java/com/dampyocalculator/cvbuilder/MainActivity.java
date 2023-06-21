@@ -25,6 +25,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.adapter.ChooseLangAdapter;
 import com.dampyocalculator.cvbuilder.detail_user.EditBahasaActivity;
 import com.dampyocalculator.cvbuilder.template.Language_Manager;
@@ -34,6 +35,9 @@ import com.gkemon.XMLtoPDF.PdfGeneratorListener;
 import com.gkemon.XMLtoPDF.Utils;
 import com.gkemon.XMLtoPDF.model.FailureResponse;
 import com.gkemon.XMLtoPDF.model.SuccessResponse;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     String[] countryNames={"English", "Indonesia"};
     int flags[] = {R.drawable.eng_lang, R.drawable.id_lang};
 
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         create_cv = findViewById(R.id.create_cv);
         profil = findViewById(R.id.profil_cv);
 
+        initializeadmob();
 
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
@@ -127,6 +134,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void initializeadmob(){
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+                Log.d("Admob", "Initialize Admob Success");
+                adsAdapter.loadbanner();
+            }
+        });
+
     }
 
     @Override

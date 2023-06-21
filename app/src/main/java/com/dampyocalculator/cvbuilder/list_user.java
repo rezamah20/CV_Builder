@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.adapter.UserAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
@@ -28,6 +29,8 @@ public class list_user extends AppCompatActivity {
     private DatabaseHandler databaseHandler;
     private Button btn_tambah;
 
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,8 @@ public class list_user extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.rview);
         btn_tambah = (Button) findViewById(R.id.tambah_profil);
         //cardView = (CardView) findViewById(R.id.cv_item_user);
+
+        adsAdapter.loadbanner();
 
         userAdapter = new UserAdapter(this, this);
 
