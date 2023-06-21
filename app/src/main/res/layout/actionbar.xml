@@ -12,7 +12,7 @@
         android:layout_gravity="left"
         android:layout_marginStart="10.5dp"
         android:gravity="center"
-        android:text="CV Builder"
+        android:text="@string/cv_makaker"
         android:textColor="@color/black"
         android:fontFamily="Roboto-Medium"
         android:textSize="20sp" />

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
 
     <application
         android:allowBackup="true"
@@ -18,39 +19,39 @@
         android:theme="@style/Theme.CVBuilder"
         tools:targetApi="31">
         <activity
-            android:name=".CreateCvActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.CreateCvActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".detail_user.EditBahasaActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.detail_user.EditBahasaActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".detail_user.EditSkillActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.detail_user.EditSkillActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".detail_user.EditPekerjaanActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.detail_user.EditPekerjaanActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".detail_user.EditPendidikanActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.detail_user.EditPendidikanActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".detail_user.EditKontakActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.detail_user.EditKontakActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".list_user"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.list_user"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".Edit_Activity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.Edit_Activity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
-            android:name=".DataUserActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.DataUserActivity"
             android:exported="false"
             android:theme="@style/Theme.Design.Light" />
         <activity
@@ -58,11 +59,11 @@
             android:theme="@style/Theme.Design" />
             <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
-                android:value="ca-app-pub-3940256099942544~3347511713"/>
+                android:value="ca-app-pub-9161313753252016~7620446789"/>
 
 
         <activity
-            android:name=".MainActivity"
+            android:name="cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light">
             <intent-filter>

@@ -3,14 +3,22 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\light\\keylite.jks')
+            storePassword 'Sempaklo123'
+            keyAlias 'resumebuilder'
+            keyPassword 'Sempaklo123'
+        }
+    }
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.dampyocalculator.cvbuilder"
+        applicationId "cvresume.resumebuildercvmakerenglish.curriculumvitaebahasaindonesiainggris"
         minSdk 21
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 100
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -18,7 +26,10 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
         }
     }
     compileOptions {
