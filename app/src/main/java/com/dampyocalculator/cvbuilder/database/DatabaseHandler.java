@@ -280,5 +280,36 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         String query = "DELETE FROM " +table_user+ " WHERE " +key_id+ " = " +id;
         database.execSQL(query);
+
+        String tb_contact = "DELETE FROM " +table_contact+ " WHERE " +key_id+ " = " +id;
+        database.execSQL(tb_contact);
+
+        String tb_pendidikan = "DELETE FROM " +table_pendidikan+ " WHERE " +key_id+ " = " +id;
+        database.execSQL(tb_pendidikan);
+
+        String tb_skill = "DELETE FROM " +table_skill+ " WHERE " +key_id+ " = " +id;
+        database.execSQL(tb_skill);
+
+        String tb_bahasa = "DELETE FROM " +table_bahasa+ " WHERE " +key_id+ " = " +id;
+        database.execSQL(tb_bahasa);
+
+        String tb_pengalaman = "DELETE FROM " +table_pengalaman+ " WHERE " +key_id+ " = " +id;
+        database.execSQL(tb_pengalaman);
+
+    }
+
+    public ArrayList<usermodels> checkusr(){
+        ArrayList <usermodels> usermodelsArrayList = new ArrayList<>();
+        SQLiteDatabase ReadData = this.getReadableDatabase();
+        Cursor c = ReadData.rawQuery("SELECT COUNT(*) FROM " +table_user, null);
+
+        if (c.moveToFirst()){
+            do {
+                usermodels usermodels = new usermodels();
+                usermodels.setCek_user(c.getInt(0));
+                usermodelsArrayList.add(usermodels);
+            }while (c.moveToNext());
+        }
+        return usermodelsArrayList;
     }
 }

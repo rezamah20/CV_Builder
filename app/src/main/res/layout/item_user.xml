@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp"
-            android:background="@drawable/background1_cardview">
+            android:background="@drawable/background1_cardview_itemusr">
 
             <TextView
                 android:id="@+id/tv_item_nama"

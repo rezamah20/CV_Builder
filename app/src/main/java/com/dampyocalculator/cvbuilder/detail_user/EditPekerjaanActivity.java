@@ -14,6 +14,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
+import com.dampyocalculator.cvbuilder.adapter.ForbidenCharAdapter;
 import com.dampyocalculator.cvbuilder.adapter.PengalamanAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
@@ -39,6 +42,9 @@ public class EditPekerjaanActivity extends AppCompatActivity {
     private DatabaseHandler db =new DatabaseHandler(this);
     private PengalamanAdapter adapter;
 
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);
+    ForbidenCharAdapter forbidenCharAdapter =new ForbidenCharAdapter(this, this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         rv_frag_exp_list = (RecyclerView) findViewById(R.id.rview_pengalaman);
         alertDialog = expFormDiaglog();
 
+        adsAdapter.loadbanner();
 
         id = getIntent().getStringExtra("id");
 
@@ -83,6 +90,13 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         mulai_bekerja_et = view.findViewById(R.id.mulai_bekerja_et);
         akhir_bekerja_et = view.findViewById(R.id.akhir_bekerja_et);
         keterangan_bekerja_et = view.findViewById(R.id.keterangan_bekerja_et);
+
+        //forbiden character
+        nama_perusahaan_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        jabatan_perusahaan_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        mulai_bekerja_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        akhir_bekerja_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        keterangan_bekerja_et.setFilters(new InputFilter[] { forbidenCharAdapter });
 
         builder.setView(view);
         builder.setTitle("Tambahkan Pengalaman");
@@ -120,6 +134,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
         insert.insert(DatabaseHandler.table_pengalaman, null, contentValues);
 
         nama_perusahaan_et.getText().clear();
+        jabatan_perusahaan_et.getText().clear();
         mulai_bekerja_et.getText().clear();
         akhir_bekerja_et.getText().clear();
         keterangan_bekerja_et.getText().clear();

@@ -15,6 +15,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,6 +26,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
+import com.dampyocalculator.cvbuilder.adapter.ForbidenCharAdapter;
 import com.dampyocalculator.cvbuilder.adapter.PendidikanAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
@@ -44,12 +47,16 @@ public class EditPendidikanActivity extends AppCompatActivity {
     AlertDialog alertDialog;
     private DatabaseHandler db =new DatabaseHandler(this);
     private PendidikanAdapter adapter;
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
+    ForbidenCharAdapter forbidenCharAdapter =new ForbidenCharAdapter(this, this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_pendidikan);
         alertDialog = expFormDiaglog();
+
+        adsAdapter.loadbanner();
 
         rv_frag_exp_list =findViewById(R.id.rview_pendidikan);
         add_pendidikan = (Button) findViewById(R.id.tambah_pendidikan);
@@ -94,7 +101,15 @@ public class EditPendidikanActivity extends AppCompatActivity {
         tahun_lulus_et = view.findViewById(R.id.tahun_lulus_et);
         keterangan_pendidikan_et = view.findViewById(R.id.keterangan_pendidikan_et);
 
-        keterangan_pendidikan_et = view.findViewById(R.id.keterangan_pendidikan_et);
+        //forbiden character
+        nama_sekolah_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        nama_jurusan_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        tahun_masuk_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        tahun_lulus_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+        keterangan_pendidikan_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+
+
+
         builder.setView(view);
 
         builder.setTitle("Tambahkan Pekerjaan");

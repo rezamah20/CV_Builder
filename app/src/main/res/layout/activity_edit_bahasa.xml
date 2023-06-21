@@ -7,10 +7,17 @@
     tools:context=".detail_user.EditBahasaActivity"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/admob_smartbanner"
+        app:layout_constraintBottom_toTopOf="parent"
+        />
+
     <Button
         android:id="@+id/tambah_bahasa"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_round_add"
         android:text="@string/add_language"
         android:textColor="@color/white"

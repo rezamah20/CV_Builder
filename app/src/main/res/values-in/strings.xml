@@ -94,7 +94,11 @@
     <string name="choose_lang_title">Ubah Bahasa</string>
     <string name="choose_lang_message">Jika Anda Mengganti Bahasa, Maka CV Akan Menggunakan Bahasa Tersebut</string>
 
+    <string name="tap_exit">Tekan Sekali Lagi Untuk Keluar</string>
 
+    <string name="name_resume">CV </string>
+
+    <string name="forbidenchar">Karakter Terlarang</string>
 
     <string-array name="level_bahasa">
         <item>Pemula</item>

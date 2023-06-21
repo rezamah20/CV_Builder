@@ -63,18 +63,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.tv_posisi.setText(list.get(position).getPosisi());
         profil = list.get(position).getProfil();
         foto = list.get(position).getImage();
+        holder.adsAdapter.loadInter();
 
 
         holder.btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity, DataUserActivity.class);
-                intent.putExtra("id", list.get(position).getId());
-                intent.putExtra("nama", list.get(position).getNama());
-                intent.putExtra("posisi", list.get(position).getPosisi());
-                intent.putExtra("profil", list.get(position).getProfil());
-                intent.putExtra("foto", list.get(position).getImage());
-                activity.startActivity(intent);
+
+                holder.adsAdapter.showInterstitial(DataUserActivity.class,list.get(position).getId());
+                //Intent intent = new Intent(activity, DataUserActivity.class);
+               // intent.putExtra("id", list.get(position).getId());
+                //intent.putExtra("nama", list.get(position).getNama());
+                //intent.putExtra("posisi", list.get(position).getPosisi());
+               // intent.putExtra("profil", list.get(position).getProfil());
+               // intent.putExtra("foto", list.get(position).getImage());
+               // activity.startActivity(intent);
             }
         });
 
@@ -116,6 +119,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public class UserViewHolder extends RecyclerView.ViewHolder {
         TextView tv_name, tv_posisi;
         Button btn_edit, btn_delete;
+        AdsAdapter adsAdapter;;
 
 
         public UserViewHolder(@NonNull View itemView) {
@@ -127,6 +131,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             btn_edit = (Button) itemView.findViewById(R.id.btn_edit);
             btn_delete = (Button) itemView.findViewById(R.id.btn_delete);
 
+            adsAdapter = new AdsAdapter(activity, context);
            // Random rnd = new Random();
             //int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
 

@@ -125,17 +125,18 @@
         android:id="@+id/create_cv2"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:background="@drawable/button_round_datauser"
-        android:text="@string/edit_experience"
-        android:textColor="@color/black"
+        android:background="@drawable/background1_cardview"
+        android:text="@string/create_cv"
+        android:textColor="@color/white"
         android:textStyle="bold"
         tools:ignore="MissingConstraints"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:drawableLeft= "@drawable/icon_pengalaman"
+        android:drawableLeft= "@drawable/create_cv2"
         app:layout_constraintTop_toBottomOf="@+id/edit_pengalaman"
         android:layout_margin="10dp"
         android:paddingLeft="16dp"
+
         />
 
 

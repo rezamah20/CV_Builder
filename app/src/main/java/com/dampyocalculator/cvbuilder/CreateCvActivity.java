@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.adapter.TmpAdapter;
 import com.dampyocalculator.cvbuilder.adapter.UserAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
@@ -53,15 +54,19 @@ public class CreateCvActivity extends AppCompatActivity {
     ImageView previewtemplate;
     private Fragment demoInvoiceFragment;
 
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_create_cv);
+        setContentView(R.layout.activity_create_cv);
+
 
         choose_profil = (Spinner) findViewById(R.id.choose_profil);
         choose_template = (Spinner) findViewById(R.id.choose_template);
         previewtemplate = (ImageView) findViewById(R.id.imgtemplate);
+
+        adsAdapter.loadbanner();
 
         test_nama = (Button) findViewById(R.id.test_nama);
         userAdapter = new UserAdapter(this, this);
@@ -81,11 +86,7 @@ public class CreateCvActivity extends AppCompatActivity {
         test_nama.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(CreateCvActivity.this, TemplateActivity.class);
-               // intent.putExtra("id", id);
-               // intent.putExtra("tmp", id_temp_txt);
-               // CreateCvActivity.this.startActivity(intent);
-               // Toast.makeText(CreateCvActivity.this, "ID Dipilih " +id+ ", ID Template " +id_temp_txt, Toast.LENGTH_SHORT).show();
+               findViewById(R.id.create_cv_layout).setVisibility(View.GONE);
                 if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
                     getSupportFragmentManager().beginTransaction()
 
@@ -135,7 +136,7 @@ public class CreateCvActivity extends AppCompatActivity {
         listtemplate = new ArrayList<>();
 
         listtemplate.add("Template 1");
-        listtemplate.add("Template 2");
+       // listtemplate.add("Template 2");
 
         imglisttemplate = new ArrayList<>();
         id_tempalte = new ArrayList<>();
@@ -156,10 +157,10 @@ public class CreateCvActivity extends AppCompatActivity {
         });
 
         imglisttemplate.add(R.drawable.preview_cv1);
-        imglisttemplate.add(R.drawable.cvtemplate2);
+        //imglisttemplate.add(R.drawable.cvtemplate2);
 
         id_tempalte.add("1");
-        id_tempalte.add("2");
+       // id_tempalte.add("2");
 
     }
 

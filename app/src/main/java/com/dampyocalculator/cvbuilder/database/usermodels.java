@@ -1,8 +1,11 @@
 package com.dampyocalculator.cvbuilder.database;
 
+import android.content.Intent;
+
 public class usermodels {
 
     String id_usr_tmp;
+    Integer cek_user;
 
     String id;
     String nama;
@@ -47,6 +50,14 @@ public class usermodels {
 
     // setter and getter
 
+
+    public Integer getCek_user() {
+        return cek_user;
+    }
+
+    public void setCek_user(Integer cek_user) {
+        this.cek_user = cek_user;
+    }
 
     public String getId_usr_tmp() {
         return id_usr_tmp;

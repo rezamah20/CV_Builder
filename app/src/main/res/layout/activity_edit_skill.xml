@@ -7,12 +7,19 @@
     tools:context=".detail_user.EditPendidikanActivity"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/admob_smartbanner"
+        app:layout_constraintBottom_toTopOf="parent"
+        />
+
     <Button
         android:id="@+id/tambah_skill"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_round_add"
         android:text="@string/add_skill"
+        android:layout_marginTop="16dp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:layout_gravity="center_vertical|center_horizontal"

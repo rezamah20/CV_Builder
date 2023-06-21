@@ -14,6 +14,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,6 +23,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
+import com.dampyocalculator.cvbuilder.adapter.ForbidenCharAdapter;
 import com.dampyocalculator.cvbuilder.adapter.SkillAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
@@ -40,11 +43,17 @@ public class EditSkillActivity extends AppCompatActivity {
     private ArrayList<usermodels> list;
     RecyclerView rv_frag_exp_list;
 
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
+    ForbidenCharAdapter forbidenCharAdapter =new ForbidenCharAdapter(this, this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_skill);
+
+        adsAdapter.loadbanner();
+
 
         tambah_skill = findViewById(R.id.tambah_skill);
         rv_frag_exp_list = findViewById(R.id.rview_skill);
@@ -79,6 +88,8 @@ public class EditSkillActivity extends AppCompatActivity {
         View view = layoutInflater.inflate(R.layout.fragskill, null);
 
         nama_skill_et = view.findViewById(R.id.nama_skill_et);
+        //forbiden character
+        nama_skill_et.setFilters(new InputFilter[] { forbidenCharAdapter });
 
         builder.setView(view);
         builder.setTitle("Tambah Skill");

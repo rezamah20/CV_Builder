@@ -15,6 +15,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,9 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.dampyocalculator.cvbuilder.R;
+import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.adapter.BahasaAdapter;
+import com.dampyocalculator.cvbuilder.adapter.ForbidenCharAdapter;
 import com.dampyocalculator.cvbuilder.adapter.PendidikanAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.dampyocalculator.cvbuilder.database.usermodels;
@@ -47,7 +50,8 @@ public class EditBahasaActivity extends AppCompatActivity {
     private BahasaAdapter adapter;
     RecyclerView rv_frag_exp_list;
 
-
+    AdsAdapter adsAdapter = new AdsAdapter(this, this);;
+    ForbidenCharAdapter forbidenCharAdapter =new ForbidenCharAdapter(this, this);
 
 
     @Override
@@ -56,10 +60,10 @@ public class EditBahasaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_bahasa);
 
         tambah_bahasa = (Button) findViewById(R.id.tambah_bahasa);
-
         rv_frag_exp_list =findViewById(R.id.rview_bahasa);
-
         alertDialog = expFormDiaglog();
+
+        adsAdapter.loadbanner();
 
         id = getIntent().getStringExtra("id");
         adapter = new BahasaAdapter(this, this);
@@ -95,6 +99,10 @@ public class EditBahasaActivity extends AppCompatActivity {
         View view = inflater.inflate(R.layout.frag_bahasa, null);
 
         isi_bahasa_et = view.findViewById(R.id.isi_bahasa_et);
+
+        //forbiden character
+        isi_bahasa_et.setFilters(new InputFilter[] { forbidenCharAdapter });
+
         builder.setTitle(this.getString(R.string.add_language));
         level_bahasa = view.findViewById(R.id.level_bahasa);
         ArrayAdapter<String> adapter_spiner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.level_bahasa));

@@ -55,8 +55,9 @@ public class list_user extends AppCompatActivity {
         btn_tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent add_intent = new Intent(list_user.this, Edit_Activity.class);
-                list_user.this.startActivity(add_intent);
+                adsAdapter.showInterstitial(Edit_Activity.class,"");
+                //Intent add_intent = new Intent(list_user.this, Edit_Activity.class);
+                //list_user.this.startActivity(add_intent);
             }
         });
     }

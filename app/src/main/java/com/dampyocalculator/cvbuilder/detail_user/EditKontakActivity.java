@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.widget.Button;
 
 import com.dampyocalculator.cvbuilder.R;
 import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
+import com.dampyocalculator.cvbuilder.adapter.ForbidenCharAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -31,6 +33,8 @@ public class EditKontakActivity extends AppCompatActivity {
     private Button simpan_kontak;
     private String id, no_tlpn, email, alamat, id_contact;
     AdsAdapter adsAdapter = new AdsAdapter(this, this);;
+    ForbidenCharAdapter forbidenCharAdapter =new ForbidenCharAdapter(this, this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,11 @@ public class EditKontakActivity extends AppCompatActivity {
         editemail = findViewById(R.id.email_et);
         editalamat = findViewById(R.id.alamat_et);
         simpan_kontak = (Button) findViewById(R.id.simpan_kontak);
+
+        //forbiden character
+        edit_notlp.setFilters(new InputFilter[] { forbidenCharAdapter });
+        editemail.setFilters(new InputFilter[] { forbidenCharAdapter });
+        editalamat.setFilters(new InputFilter[] { forbidenCharAdapter });
 
         id = getIntent().getStringExtra("id");
 

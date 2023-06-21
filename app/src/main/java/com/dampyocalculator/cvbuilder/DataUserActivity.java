@@ -29,7 +29,7 @@ import java.util.Objects;
 public class DataUserActivity extends AppCompatActivity {
     private ImageView imageView;
     private String image, id, nama, posisi, profil;
-    private Button edit_profil, edit_kontak, edit_pendidikan, edit_skill, edit_bahasa ,edit_pengalaman;
+    private Button edit_profil, edit_kontak, edit_pendidikan, edit_skill, edit_bahasa ,edit_pengalaman, create_cv;
     private DatabaseHandler db;
 
     AdsAdapter adsAdapter = new AdsAdapter(this, this);;
@@ -41,6 +41,7 @@ public class DataUserActivity extends AppCompatActivity {
         db = new DatabaseHandler(this);
 
         adsAdapter.loadbanner();
+        adsAdapter.loadInter();
 
         imageView = (ImageView) findViewById(R.id.data_img_user);
         edit_profil = (Button) findViewById(R.id.edit_profil);
@@ -49,6 +50,7 @@ public class DataUserActivity extends AppCompatActivity {
         edit_skill = (Button) findViewById(R.id.edit_skill);
         edit_pengalaman = (Button) findViewById(R.id.edit_pengalaman);
         edit_bahasa = (Button) findViewById(R.id.edit_bahasa);
+        create_cv = (Button) findViewById(R.id.create_cv2);
 
         image = getIntent().getStringExtra("foto");
 
@@ -59,55 +61,76 @@ public class DataUserActivity extends AppCompatActivity {
         edit_profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DataUserActivity.this, Edit_Activity.class);
-                intent.putExtra("id", id);
-                DataUserActivity.this.startActivity(intent);
+                adsAdapter.showInterstitial(Edit_Activity.class, id);
+               // Intent intent = new Intent(DataUserActivity.this, Edit_Activity.class);
+              //  intent.putExtra("id", id);
+               // DataUserActivity.this.startActivity(intent);
             }
         });
 
         edit_kontak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DataUserActivity.this, EditKontakActivity.class);
-                intent.putExtra("id", id);
+                adsAdapter.showInterstitial(EditKontakActivity.class, id);
+                //Intent intent = new Intent(DataUserActivity.this, EditKontakActivity.class);
+                //intent.putExtra("id", id);
 
-                DataUserActivity.this.startActivity(intent);
+                //DataUserActivity.this.startActivity(intent);
             }
         });
 
         edit_pendidikan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DataUserActivity.this, EditPendidikanActivity.class);
-                intent.putExtra("id", id);
-                DataUserActivity.this.startActivity(intent);
+                adsAdapter.showInterstitial(EditPendidikanActivity.class, id);
+
+                // Intent intent = new Intent(DataUserActivity.this, EditPendidikanActivity.class);
+               // intent.putExtra("id", id);
+               // DataUserActivity.this.startActivity(intent);
             }
         });
 
         edit_pengalaman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DataUserActivity.this, EditPekerjaanActivity.class);
-                intent.putExtra("id", id);
-                DataUserActivity.this.startActivity(intent);
+                adsAdapter.showInterstitial(EditPekerjaanActivity.class, id);
+
+                //  Intent intent = new Intent(DataUserActivity.this, EditPekerjaanActivity.class);
+               // intent.putExtra("id", id);
+               // DataUserActivity.this.startActivity(intent);
             }
         });
 
         edit_skill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DataUserActivity.this, EditSkillActivity.class);
-                intent.putExtra("id", id);
-                DataUserActivity.this.startActivity(intent);
+                adsAdapter.showInterstitial(EditSkillActivity.class, id);
+
+                // Intent intent = new Intent(DataUserActivity.this, EditSkillActivity.class);
+               // intent.putExtra("id", id);
+              //  DataUserActivity.this.startActivity(intent);
             }
         });
 
         edit_bahasa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DataUserActivity.this, EditBahasaActivity.class);
-                intent.putExtra("id", id);
-                DataUserActivity.this.startActivity(intent);
+                adsAdapter.showInterstitial(EditBahasaActivity.class, id);
+
+                // Intent intent = new Intent(DataUserActivity.this, EditBahasaActivity.class);
+               // intent.putExtra("id", id);
+               // DataUserActivity.this.startActivity(intent);
+            }
+        });
+
+        create_cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adsAdapter.showInterstitial(CreateCvActivity.class, id);
+
+                // Intent intent = new Intent(DataUserActivity.this, EditBahasaActivity.class);
+                // intent.putExtra("id", id);
+                // DataUserActivity.this.startActivity(intent);
             }
         });
 

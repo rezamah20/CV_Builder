@@ -93,6 +93,12 @@
     <string name="choose_lang_title">Change Language</string>
     <string name="choose_lang_message">If You Change Language, Resume Will Use Language Your Choice !!</string>
 
+    <string name="tap_exit">Please click BACK again to exit</string>
+
+    <string name="name_resume">Resume</string>
+
+    <string name="forbidenchar">Forbidden Character</string>
+
 
     <string-array name="level_bahasa">
         <item>Beginner</item>

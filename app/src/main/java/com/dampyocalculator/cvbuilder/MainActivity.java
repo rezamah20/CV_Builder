@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +28,8 @@ import android.widget.Toast;
 
 import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
 import com.dampyocalculator.cvbuilder.adapter.ChooseLangAdapter;
+import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
+import com.dampyocalculator.cvbuilder.database.usermodels;
 import com.dampyocalculator.cvbuilder.detail_user.EditBahasaActivity;
 import com.dampyocalculator.cvbuilder.template.Language_Manager;
 import com.gkemon.XMLtoPDF.PdfGenerator;
@@ -39,6 +42,7 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -55,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
     AdsAdapter adsAdapter = new AdsAdapter(this, this);;
 
+    private boolean doubleBackToExitPressedOnce;
+    private Handler mHandler = new Handler();
+
+    DatabaseHandler databaseHandler;
+    private ArrayList<usermodels> list = new ArrayList<>();
+    int ttl_usr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
         initializeadmob();
 
+        databaseHandler = new DatabaseHandler(this);
+        list = databaseHandler.checkusr();
+        ttl_usr = list.get(0).getCek_user();
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             Locale current = getResources().getConfiguration().getLocales().get(0);
@@ -122,16 +136,23 @@ public class MainActivity extends AppCompatActivity {
         create_cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CreateCvActivity.class);
-                MainActivity.this.startActivity(intent);
+                if (ttl_usr == 0){
+                    adsAdapter.showInterstitial(Edit_Activity.class,"");
+
+                }else {
+                    adsAdapter.showInterstitial(CreateCvActivity.class, "");
+                }
+                //Intent intent = new Intent(MainActivity.this, CreateCvActivity.class);
+                //MainActivity.this.startActivity(intent);
             }
         });
 
         profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, list_user.class);
-                startActivity(intent);
+                adsAdapter.showInterstitial(list_user.class,"");
+                //Intent intent = new Intent(MainActivity.this, list_user.class);
+                //startActivity(intent);
             }
         });
     }
@@ -142,9 +163,35 @@ public class MainActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
                 Log.d("Admob", "Initialize Admob Success");
                 adsAdapter.loadbanner();
+                adsAdapter.loadInter();
             }
         });
 
+    }
+
+    private final Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            doubleBackToExitPressedOnce = false;
+        }
+    };
+    @Override
+    protected void onDestroy()
+    {
+        super.onDestroy();
+
+        if (mHandler != null) { mHandler.removeCallbacks(mRunnable); }
+    }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+           finishAffinity();
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, this.getString(R.string.tap_exit), Toast.LENGTH_SHORT).show();
+
+        mHandler.postDelayed(mRunnable, 2000);
     }
 
     @Override

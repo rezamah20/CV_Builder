@@ -6,11 +6,14 @@ import androidx.core.view.MenuCompat;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.dampyocalculator.cvbuilder.adapter.AdsAdapter;
+import com.dampyocalculator.cvbuilder.adapter.ForbidenCharAdapter;
 import com.dampyocalculator.cvbuilder.database.DatabaseHandler;
 import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -38,6 +42,7 @@ public class Edit_Activity extends AppCompatActivity {
     private ImageView imageView;
 
     AdsAdapter adsAdapter = new AdsAdapter(this, this);;
+    ForbidenCharAdapter forbidenCharAdapter =new ForbidenCharAdapter(this, this);
 
 
     @Override
@@ -53,15 +58,16 @@ public class Edit_Activity extends AppCompatActivity {
         editprofil = findViewById(R.id.dataprofil_et);
         btn_chose_photo = findViewById(R.id.add_image);
         imageView = (ImageView) findViewById(R.id.img_user);
-        db = new DatabaseHandler(this);
 
-        //getData();
+        //forbiden character
+        editnama.setFilters(new InputFilter[] { forbidenCharAdapter });
+        editposisi.setFilters(new InputFilter[] { forbidenCharAdapter });
+        editprofil.setFilters(new InputFilter[] { forbidenCharAdapter });
+
+
+
+        db = new DatabaseHandler(this);
         id = getIntent().getStringExtra("id");
-        /*nama = getIntent().getStringExtra("nama");
-        posisi = getIntent().getStringExtra("posisi");
-        profil = getIntent().getStringExtra("profil");
-        image = getIntent().getStringExtra("foto");
-        */
 
 
         if (id == null || id.equals("")){
