@@ -191,14 +191,14 @@ public class EditPekerjaanActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
+        final String appPackageName = getPackageName();
         switch (item.getItemId()){
             case R.id.shareButton:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = "Create Your CV Resume";
-                String shareSubject = "Thanks for Sharing this app";
+                String urlapp = "https://play.google.com/store/apps/details?id="+appPackageName;
+                String shareBody = "Create Your CV Resume Download App in Store \n \n"+urlapp;
                 sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
                 startActivity(Intent.createChooser(sharingIntent, "Create Your CV Resume"));
                 return true;
             case R.id.more_app:
@@ -207,7 +207,7 @@ public class EditPekerjaanActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.privacy_policy:
-                Uri uri2 = Uri.parse("https://pages.flycricket.io/cleaner-whatsapp/privacy.html");
+                Uri uri2 = Uri.parse("https://doc-hosting.flycricket.io/resume-builder-cv-marker-pdf/eedb7b8a-5f82-452d-ad1a-100566b0a91b/privacy");
                 Intent intent2 = new Intent(Intent.ACTION_VIEW, uri2);
                 startActivity(intent2);
                 return true;
